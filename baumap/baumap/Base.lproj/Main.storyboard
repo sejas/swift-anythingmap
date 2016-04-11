@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,7 +17,44 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xm7-hs-Gxl">
+                                <rect key="frame" x="180" y="90" width="240" height="128"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XHG-hl-DBs">
+                                <rect key="frame" x="175" y="252" width="250" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ym0-cT-5xE">
+                                <rect key="frame" x="175" y="290" width="250" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCy-JD-t4f">
+                                <rect key="frame" x="180" y="442" width="240" height="30"/>
+                                <state key="normal" title="Facebook"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Don't have an account? Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8te-mn-37J">
+                                <rect key="frame" x="20" y="384" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xm7-hs-Gxl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="160" id="CBR-st-t6U"/>
+                            <constraint firstItem="XHG-hl-DBs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="155" id="FFZ-je-D9r"/>
+                            <constraint firstItem="8te-mn-37J" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="WAo-Do-mBh"/>
+                            <constraint firstItem="Xm7-hs-Gxl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="70" id="ceT-G1-naP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xm7-hs-Gxl" secondAttribute="trailing" constant="160" id="jeC-jT-ABt"/>
+                            <constraint firstItem="8te-mn-37J" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="kyN-gF-bhI"/>
+                            <constraint firstItem="8te-mn-37J" firstAttribute="top" secondItem="Ym0-cT-5xE" secondAttribute="bottom" constant="44" id="mVN-rN-aQ0"/>
+                            <constraint firstItem="XHG-hl-DBs" firstAttribute="top" secondItem="Xm7-hs-Gxl" secondAttribute="bottom" constant="34" id="pHG-Dw-Qbx"/>
+                            <constraint firstItem="Ym0-cT-5xE" firstAttribute="top" secondItem="XHG-hl-DBs" secondAttribute="bottom" constant="8" id="upg-ZR-Kef"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XHG-hl-DBs" secondAttribute="trailing" constant="155" id="zcu-DP-v9i"/>
+                        </constraints>
                     </view>
                     <connections>
                         <segue destination="c0h-tJ-sHU" kind="presentation" id="1PZ-nK-mg6"/>
@@ -24,6 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="305" y="381"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="btl-Yk-ui9">
