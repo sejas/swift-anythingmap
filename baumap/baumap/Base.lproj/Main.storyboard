@@ -67,7 +67,7 @@
         <!--Item 2-->
         <scene sceneID="btl-Yk-ui9">
             <objects>
-                <viewController id="ged-78-ati" sceneMemberID="viewController">
+                <viewController id="ged-78-ati" customClass="TableObjectesViewController" customModule="baumap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jmZ-tP-Zda"/>
                         <viewControllerLayoutGuide type="bottom" id="3x5-Iq-fOz"/>
@@ -90,6 +90,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="JdB-Sk-seb"/>
+                    <connections>
+                        <outlet property="table" destination="a07-iA-HJ0" id="y0r-8i-yOG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pPX-k7-5qQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

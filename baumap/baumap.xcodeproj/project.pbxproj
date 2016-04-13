@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B124A5BA1CBEE223007813A3 /* TableObjectesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5B91CBEE223007813A3 /* TableObjectesViewController.swift */; };
 		B1D9D51F1CAF19E3005573F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D9D51E1CAF19E3005573F5 /* AppDelegate.swift */; };
 		B1D9D5211CAF19E3005573F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D9D5201CAF19E3005573F5 /* ViewController.swift */; };
 		B1D9D5241CAF19E3005573F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D9D5221CAF19E3005573F5 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B124A5B91CBEE223007813A3 /* TableObjectesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableObjectesViewController.swift; sourceTree = "<group>"; };
 		B1D9D51B1CAF19E3005573F5 /* baumap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = baumap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D9D51E1CAF19E3005573F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1D9D5201CAF19E3005573F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B124A5B81CBEE1FB007813A3 /* table */ = {
+			isa = PBXGroup;
+			children = (
+				B124A5B91CBEE223007813A3 /* TableObjectesViewController.swift */,
+			);
+			name = table;
+			sourceTree = "<group>";
+		};
 		B1D9D5121CAF19E2005573F5 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +64,7 @@
 		B1D9D51D1CAF19E3005573F5 /* baumap */ = {
 			isa = PBXGroup;
 			children = (
+				B124A5B81CBEE1FB007813A3 /* table */,
 				B1D9D51E1CAF19E3005573F5 /* AppDelegate.swift */,
 				B1D9D5201CAF19E3005573F5 /* ViewController.swift */,
 				B1D9D5221CAF19E3005573F5 /* Main.storyboard */,
@@ -136,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1D9D5211CAF19E3005573F5 /* ViewController.swift in Sources */,
+				B124A5BA1CBEE223007813A3 /* TableObjectesViewController.swift in Sources */,
 				B1D9D51F1CAF19E3005573F5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +300,7 @@
 				B1D9D52F1CAF19E3005573F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
