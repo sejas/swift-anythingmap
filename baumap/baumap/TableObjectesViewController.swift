@@ -12,7 +12,7 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
 
     @IBOutlet weak var table: UITableView!
     
-    var objects = []
+    var objects = ["Uno","Dos", "Tres"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +32,7 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //TODO: ObjectCell
         let cell = tableView.dequeueReusableCellWithIdentifier("ObjectCell")! //as! TableMemesTableViewCell
+        cell.textLabel?.text = objects[indexPath.row]
         return cell
     }
     //MARK: Segues
