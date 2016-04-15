@@ -158,4 +158,29 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         ]
     }
 
+    @IBAction func actionLogout(sender: AnyObject) {
+        UdacityClient.sharedInstance().logout({(result,error) in
+            guard nil == error else {
+                self.showError("",message: "Sorry we couldn't make the logout")
+                return
+            }
+            performUIUpdatesOnMain({self.dismissViewControllerAnimated(true, completion: nil)})
+            //navigationController?.popToRootViewControllerAnimated(true)
+            print(result)
+            print(error)
+        })
+        
+    }
+    @IBAction func actionGeoLocate(sender: AnyObject) {
+    }
+    @IBAction func actionUpdate(sender: AnyObject) {
+    }
+    
+    // Mark: General Helpers
+    func showError(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message:
+            message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
+        performUIUpdatesOnMain({self.presentViewController(alertController, animated: true, completion: nil)})
+    }
 }

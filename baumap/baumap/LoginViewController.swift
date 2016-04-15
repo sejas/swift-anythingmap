@@ -50,6 +50,9 @@ class LoginViewController: UIViewController {
             //Save session for autologin
             UdacityClient.sharedInstance().saveSession(session)
             performUIUpdatesOnMain({
+                self.tfEmail.text = ""
+                self.tfPassword.text = ""
+                
                 self.performSegueWithIdentifier("toTabView", sender: session.session_id)
             })
         }
@@ -58,13 +61,12 @@ class LoginViewController: UIViewController {
         //TODO: Facebook login
     }
     
-    // Mark: General
+    // Mark: General Helpers
     func showError(title: String, message: String) {
         let alertController = UIAlertController(title: title, message:
             message, preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
+        performUIUpdatesOnMain({self.presentViewController(alertController, animated: true, completion: nil)})
     }
 
 }
