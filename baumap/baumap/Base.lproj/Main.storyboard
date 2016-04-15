@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -17,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xm7-hs-Gxl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="udacity" translatesAutoresizingMaskIntoConstraints="NO" id="Xm7-hs-Gxl">
                                 <rect key="frame" x="180" y="90" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="esq-HV-Trl"/>
@@ -33,20 +34,18 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCy-JD-t4f">
                                 <rect key="frame" x="180" y="471" width="240" height="30"/>
-                                <state key="normal" title="Facebook"/>
+                                <state key="normal" title="Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="actionFacebookLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K68-6R-7f1"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Don't have an account? Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8te-mn-37J">
-                                <rect key="frame" x="20" y="442" width="560" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieT-WT-bal">
                                 <rect key="frame" x="281" y="350" width="38" height="30"/>
-                                <state key="normal" title="Login"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="actionLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9qC-6H-NfO"/>
                                 </connections>
@@ -59,14 +58,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgd-cK-YZX">
+                                <rect key="frame" x="191" y="433" width="219" height="30"/>
+                                <state key="normal" title="Don't have an account? Sign Up"/>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.00073269029249999995" green="0.55090071809999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="XHG-hl-DBs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2OY-C6-cTi"/>
                             <constraint firstItem="fCy-JD-t4f" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="54f-AR-HLV"/>
+                            <constraint firstItem="Zgd-cK-YZX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5NB-UL-TLz"/>
                             <constraint firstItem="Xm7-hs-Gxl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Ai-pj-bCV"/>
                             <constraint firstItem="Ym0-cT-5xE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FXS-sv-ERQ"/>
-                            <constraint firstItem="8te-mn-37J" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NS3-5p-mVj"/>
                             <constraint firstItem="ieT-WT-bal" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="egF-Te-vlu"/>
                         </constraints>
                     </view>
@@ -131,13 +134,21 @@
                                     <outlet property="delegate" destination="5UI-sW-aA9" id="Hs8-jd-CGb"/>
                                 </connections>
                             </mapView>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ijL-TI-Avo">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Links on a Map" id="UP8-XE-ebm"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nPl-9c-xIL" firstAttribute="top" secondItem="8im-4k-6lk" secondAttribute="bottom" id="3Hn-1R-Qnb"/>
                             <constraint firstItem="8im-4k-6lk" firstAttribute="top" secondItem="F2T-08-oLo" secondAttribute="bottom" id="A9d-oo-Ind"/>
+                            <constraint firstItem="ijL-TI-Avo" firstAttribute="leading" secondItem="3iv-1c-EgF" secondAttribute="leadingMargin" constant="-20" id="CXb-oa-ZlN"/>
                             <constraint firstAttribute="trailing" secondItem="8im-4k-6lk" secondAttribute="trailing" id="GeK-pV-KcI"/>
                             <constraint firstItem="8im-4k-6lk" firstAttribute="leading" secondItem="3iv-1c-EgF" secondAttribute="leading" id="UXS-Gr-LSA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ijL-TI-Avo" secondAttribute="trailing" constant="-20" id="eb3-mG-dzx"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="ViF-2t-eLe"/>
@@ -171,5 +182,6 @@
     <resources>
         <image name="list" width="32" height="32"/>
         <image name="map" width="32" height="32"/>
+        <image name="udacity" width="256" height="256"/>
     </resources>
 </document>
