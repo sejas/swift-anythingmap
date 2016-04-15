@@ -24,14 +24,6 @@
                                     <constraint firstAttribute="width" constant="240" id="esq-HV-Trl"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ym0-cT-5xE">
-                                <rect key="frame" x="175" y="290" width="250" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="zLb-2D-0GA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCy-JD-t4f">
                                 <rect key="frame" x="180" y="471" width="240" height="30"/>
                                 <state key="normal" title="Facebook">
@@ -50,6 +42,14 @@
                                     <action selector="actionLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9qC-6H-NfO"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ym0-cT-5xE">
+                                <rect key="frame" x="175" y="290" width="250" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="zLb-2D-0GA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XHG-hl-DBs">
                                 <rect key="frame" x="175" y="252" width="250" height="30"/>
                                 <constraints>
@@ -74,7 +74,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tfEmail" destination="XHG-hl-DBs" id="b3Q-yK-kmf"/>
+                        <outlet property="tfEmail" destination="XHG-hl-DBs" id="a9P-AA-0VF"/>
+                        <outlet property="tfPassword" destination="Ym0-cT-5xE" id="fpf-Tq-yFl"/>
                         <segue destination="c0h-tJ-sHU" kind="presentation" identifier="toTabView" id="e7v-1O-urn"/>
                     </connections>
                 </viewController>

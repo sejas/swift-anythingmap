@@ -14,8 +14,19 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var tfPassword: UITextField!
     
     @IBAction func actionLogin(sender: AnyObject) {
-        //TODO: check the email password with api
-        performSegueWithIdentifier("toTabView", sender: nil)
+        guard let email = tfEmail.text,
+            let password = tfPassword.text else {
+                //TODO: Inform the error in credentials
+                return
+        }
+        print("loging with user\(email) password:\(password)")
+        UdacityClient.sharedInstance().authenticate(email, password: password) { (result, error) in
+            print("result",result)
+            print("error",error)
+        }
+        
+        //TODO: Uncomment after login
+        //performSegueWithIdentifier("toTabView", sender: nil)
     }
     @IBAction func actionFacebookLogin(sender: AnyObject) {
     }

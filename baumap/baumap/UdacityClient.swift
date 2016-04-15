@@ -23,12 +23,13 @@ class UdacityClient: NSObject {
  *username - (String) the username (email) for a Udacity student
  *password - (String) the password for a Udacity student
 */
-    func authenticate(user: String, password: String, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func authenticate(email: String, password: String, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         let request = NSMutableURLRequest(URL: NSURL(string: Constants.AuthorizationURL)!)
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPBody = "{\"udacity\": {\"username\": \"\(user)\", \"password\": \"\(password)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPBody = "{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
+        print("authenticate sending with ","{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}")
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
             func sendError(error: String) {
@@ -47,13 +48,30 @@ class UdacityClient: NSObject {
             let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
             let stringResonse = NSString(data: newData, encoding: NSUTF8StringEncoding)
             print(stringResonse)
-            completionHandler(result: stringResonse, error: nil)
             
+            self.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandler)
         }
         task.resume()
 
         
         return task
+    }
+    
+    
+    
+    
+    // Transform NSData returning a JSON Foundation object
+    private func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
+        
+        var parsedResult: AnyObject!
+        do {
+            parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+        } catch {
+            let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
+            completionHandlerForConvertData(result: nil, error: NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
+        }
+        
+        completionHandlerForConvertData(result: parsedResult, error: nil)
     }
     
     

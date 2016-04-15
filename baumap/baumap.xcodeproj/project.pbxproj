@@ -136,9 +136,9 @@
 		B1D9D51D1CAF19E3005573F5 /* baumap */ = {
 			isa = PBXGroup;
 			children = (
-				B124A5C71CC1442F007813A3 /* Controllers */,
 				B124A5C31CC143F0007813A3 /* Model */,
 				B1D9D51E1CAF19E3005573F5 /* AppDelegate.swift */,
+				B124A5C71CC1442F007813A3 /* Controllers */,
 				B124A5C81CC1444F007813A3 /* Assets */,
 				B1D9D52A1CAF19E3005573F5 /* Info.plist */,
 			);
