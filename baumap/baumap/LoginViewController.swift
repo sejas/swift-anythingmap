@@ -14,6 +14,22 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tryAutoLogin()
+    }
+    
+    // Mark: Logins
+    func tryAutoLogin() {
+        guard let session_id = UdacityClient.sharedInstance().loadSessionID() else {
+            return
+        }
+        
+        performUIUpdatesOnMain({
+            self.performSegueWithIdentifier("toTabView", sender: session_id)
+        })
+    }
     @IBAction func actionLogin(sender: AnyObject) {
         //Clean data
         guard let email = tfEmail.text,
@@ -29,9 +45,12 @@ class LoginViewController: UIViewController {
                 print("error",error)
                 return
             }
+            
             print(session)
-            performUIUpdatesOnMain({ 
-              self.performSegueWithIdentifier("toTabView", sender: session.session_id)  
+            //Save session for autologin
+            UdacityClient.sharedInstance().saveSession(session)
+            performUIUpdatesOnMain({
+                self.performSegueWithIdentifier("toTabView", sender: session.session_id)
             })
         }
     }
@@ -39,12 +58,7 @@ class LoginViewController: UIViewController {
         //TODO: Facebook login
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    
+    // Mark: General
     func showError(title: String, message: String) {
         let alertController = UIAlertController(title: title, message:
             message, preferredStyle: UIAlertControllerStyle.Alert)

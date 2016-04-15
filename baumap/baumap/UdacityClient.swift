@@ -17,8 +17,10 @@ class UdacityClient: NSObject {
     struct Constants {
         // MARK: URLs
         static let AuthorizationURL : String = "https://www.udacity.com/api/session"
+        static let NSDefaultsKeyForSession: String = "udacitySession"
     }
     
+    let prefs = NSUserDefaults.standardUserDefaults()
     let udacitySessionError = udacitySession(session_id: "",account_key: "",expiration: "")
     
     // MARK: POST
@@ -91,6 +93,19 @@ class UdacityClient: NSObject {
         }
         
         completionHandlerForConvertData(result: parsedResult, error: nil)
+    }
+    
+    // MARK: NSDefaults to save and restore the session
+    func saveSession(session: udacitySession) {
+        prefs.setValue(session.session_id, forKey: Constants.NSDefaultsKeyForSession)
+        prefs.setValue(session.expiration, forKey: "\(Constants.NSDefaultsKeyForSession)Expiration")
+    }
+    func loadSessionID() -> String? {
+        guard let session_id = prefs.stringForKey(Constants.NSDefaultsKeyForSession) else{
+            return nil
+        }
+        //TODO: Check if it is expired
+        return session_id
     }
     
     
