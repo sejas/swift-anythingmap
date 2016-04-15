@@ -7,7 +7,11 @@
 //
 
 import UIKit
-
+struct udacitySession {
+    var session_id: String
+    var account_key: String
+    var expiration: String
+}
 class UdacityClient: NSObject {
     //MARK: Constants
     struct Constants {
@@ -15,27 +19,27 @@ class UdacityClient: NSObject {
         static let AuthorizationURL : String = "https://www.udacity.com/api/session"
     }
     
+    let udacitySessionError = udacitySession(session_id: "",account_key: "",expiration: "")
+    
     // MARK: POST
 /*
- *Method Type: POST
- *Required Parameters:
- *udacity - (Dictionary) a dictionary containing a username (email) and password pair used for authentication
- *username - (String) the username (email) for a Udacity student
- *password - (String) the password for a Udacity student
+* Make the POST CALL TO THE UDACITY API and return a valid session or error
+* Method Type: POST {udacity:{username:"",password:""}}
 */
-    func authenticate(email: String, password: String, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func authenticate(email: String, password: String, completionHandler: (result: udacitySession, error: NSError?) -> Void) -> NSURLSessionDataTask {
         let request = NSMutableURLRequest(URL: NSURL(string: Constants.AuthorizationURL)!)
+        
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = "{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
-        print("authenticate sending with ","{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}")
+
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
             func sendError(error: String) {
                 print(error)
                 let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandler(result: nil, error: NSError(domain: "authenticate", code: 1, userInfo: userInfo))
+                completionHandler(result: self.udacitySessionError, error: NSError(domain: "authenticate", code: 1, userInfo: userInfo))
             }
             
             /* GUARD: Was there an error? */
@@ -49,7 +53,9 @@ class UdacityClient: NSObject {
             let stringResonse = NSString(data: newData, encoding: NSUTF8StringEncoding)
             print(stringResonse)
             
-            self.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandler)
+            self.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: {(result, error) in
+                self.parseAuthenticationWithCompletionHandler(result as? NSDictionary, completionHandler: completionHandler)
+            })
         }
         task.resume()
 
@@ -57,7 +63,20 @@ class UdacityClient: NSObject {
         return task
     }
     
-    
+    //Parse and validate a JSON to return a valid Session or Error. Is a self.authenticate helper
+    func parseAuthenticationWithCompletionHandler(authJson: NSDictionary?, completionHandler: (result: udacitySession,error: NSError?) -> Void) {
+        guard let account = authJson!["account"],
+            let account_key = account["key"] as? String,
+            let session = authJson!["session"],
+            let expiration = session["expiration"] as? String,
+            let session_id = session["id"] as? String else {
+                let userInfo = [NSLocalizedDescriptionKey : "Error wrong user password"]
+                completionHandler(result: self.udacitySessionError, error: NSError(domain: "authenticate", code: 1, userInfo: userInfo))
+                return
+        }
+        
+        completionHandler(result: udacitySession(session_id: session_id, account_key: account_key, expiration: expiration), error: nil)
+    }
     
     
     // Transform NSData returning a JSON Foundation object

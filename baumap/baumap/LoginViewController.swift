@@ -6,6 +6,7 @@
 //  Copyright © 2016 Antonio Sejas. All rights reserved.
 //
 
+
 import UIKit
 
 class LoginViewController: UIViewController {
@@ -14,15 +15,21 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var tfPassword: UITextField!
     
     @IBAction func actionLogin(sender: AnyObject) {
+        //Clean data
         guard let email = tfEmail.text,
             let password = tfPassword.text else {
-                //TODO: Inform the error in credentials
+                //TODO: Inform the error in credentials "format"
                 return
         }
+        
         print("loging with user\(email) password:\(password)")
-        UdacityClient.sharedInstance().authenticate(email, password: password) { (result, error) in
-            print("result",result)
-            print("error",error)
+        UdacityClient.sharedInstance().authenticate(email, password: password) { (session, error) in
+            guard nil == error else {
+                //TODO: Inform the error authenticating
+                print("error",error)
+                return
+            }
+            print(session)
         }
         
         //TODO: Uncomment after login
