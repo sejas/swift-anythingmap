@@ -79,7 +79,7 @@
             </objects>
             <point key="canvasLocation" x="305" y="381"/>
         </scene>
-        <!--Item 2-->
+        <!--List-->
         <scene sceneID="btl-Yk-ui9">
             <objects>
                 <viewController id="ged-78-ati" customClass="TableObjectesViewController" customModule="baumap" customModuleProvider="target" sceneMemberID="viewController">
@@ -104,7 +104,7 @@
                             <constraint firstItem="a07-iA-HJ0" firstAttribute="leading" secondItem="9cC-k5-egX" secondAttribute="leading" id="vzs-Q3-gAz"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="JdB-Sk-seb"/>
+                    <tabBarItem key="tabBarItem" title="List" image="list" id="JdB-Sk-seb"/>
                     <connections>
                         <outlet property="table" destination="a07-iA-HJ0" id="y0r-8i-yOG"/>
                     </connections>
@@ -113,7 +113,7 @@
             </objects>
             <point key="canvasLocation" x="1916" y="719"/>
         </scene>
-        <!--Item 1-->
+        <!--Map-->
         <scene sceneID="qQQ-RN-PRV">
             <objects>
                 <viewController id="5UI-sW-aA9" customClass="MapViewController" customModule="baumap" customModuleProvider="target" sceneMemberID="viewController">
@@ -127,6 +127,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8im-4k-6lk">
                                 <rect key="frame" x="0.0" y="20" width="600" height="531"/>
+                                <connections>
+                                    <outlet property="delegate" destination="5UI-sW-aA9" id="Hs8-jd-CGb"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -137,7 +140,7 @@
                             <constraint firstItem="8im-4k-6lk" firstAttribute="leading" secondItem="3iv-1c-EgF" secondAttribute="leading" id="UXS-Gr-LSA"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="ViF-2t-eLe"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="ViF-2t-eLe"/>
                     <connections>
                         <outlet property="map" destination="8im-4k-6lk" id="EyO-ll-sJ8"/>
                     </connections>
@@ -165,4 +168,8 @@
             <point key="canvasLocation" x="1096" y="391"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="list" width="32" height="32"/>
+        <image name="map" width="32" height="32"/>
+    </resources>
 </document>
