@@ -30,7 +30,9 @@ class LoginViewController: UIViewController {
                 return
             }
             print(session)
-            self.performSegueWithIdentifier("toTabView", sender: session.session_id)
+            performUIUpdatesOnMain({ 
+              self.performSegueWithIdentifier("toTabView", sender: session.session_id)  
+            })
         }
     }
     @IBAction func actionFacebookLogin(sender: AnyObject) {
