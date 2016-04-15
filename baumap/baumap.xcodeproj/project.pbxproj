@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B124A5BA1CBEE223007813A3 /* TableObjectesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5B91CBEE223007813A3 /* TableObjectesViewController.swift */; };
+		B124A5C01CC0E57D007813A3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5BF1CC0E57D007813A3 /* MapViewController.swift */; };
 		B1D9D51F1CAF19E3005573F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D9D51E1CAF19E3005573F5 /* AppDelegate.swift */; };
-		B1D9D5211CAF19E3005573F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D9D5201CAF19E3005573F5 /* ViewController.swift */; };
+		B1D9D5211CAF19E3005573F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D9D5201CAF19E3005573F5 /* LoginViewController.swift */; };
 		B1D9D5241CAF19E3005573F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D9D5221CAF19E3005573F5 /* Main.storyboard */; };
 		B1D9D5261CAF19E3005573F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1D9D5251CAF19E3005573F5 /* Assets.xcassets */; };
 		B1D9D5291CAF19E3005573F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D9D5271CAF19E3005573F5 /* LaunchScreen.storyboard */; };
@@ -17,9 +18,10 @@
 
 /* Begin PBXFileReference section */
 		B124A5B91CBEE223007813A3 /* TableObjectesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableObjectesViewController.swift; sourceTree = "<group>"; };
+		B124A5BF1CC0E57D007813A3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B1D9D51B1CAF19E3005573F5 /* baumap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = baumap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D9D51E1CAF19E3005573F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B1D9D5201CAF19E3005573F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B1D9D5201CAF19E3005573F5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B1D9D5231CAF19E3005573F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1D9D5251CAF19E3005573F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1D9D5281CAF19E3005573F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 			name = table;
 			sourceTree = "<group>";
 		};
+		B124A5BE1CC0E56B007813A3 /* map */ = {
+			isa = PBXGroup;
+			children = (
+				B124A5BF1CC0E57D007813A3 /* MapViewController.swift */,
+			);
+			name = map;
+			sourceTree = "<group>";
+		};
 		B1D9D5121CAF19E2005573F5 = {
 			isa = PBXGroup;
 			children = (
@@ -64,9 +74,10 @@
 		B1D9D51D1CAF19E3005573F5 /* baumap */ = {
 			isa = PBXGroup;
 			children = (
+				B124A5BE1CC0E56B007813A3 /* map */,
 				B124A5B81CBEE1FB007813A3 /* table */,
 				B1D9D51E1CAF19E3005573F5 /* AppDelegate.swift */,
-				B1D9D5201CAF19E3005573F5 /* ViewController.swift */,
+				B1D9D5201CAF19E3005573F5 /* LoginViewController.swift */,
 				B1D9D5221CAF19E3005573F5 /* Main.storyboard */,
 				B1D9D5251CAF19E3005573F5 /* Assets.xcassets */,
 				B1D9D5271CAF19E3005573F5 /* LaunchScreen.storyboard */,
@@ -146,9 +157,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1D9D5211CAF19E3005573F5 /* ViewController.swift in Sources */,
+				B1D9D5211CAF19E3005573F5 /* LoginViewController.swift in Sources */,
 				B124A5BA1CBEE223007813A3 /* TableObjectesViewController.swift in Sources */,
 				B1D9D51F1CAF19E3005573F5 /* AppDelegate.swift in Sources */,
+				B124A5C01CC0E57D007813A3 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

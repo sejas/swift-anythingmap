@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="baumap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="baumap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -32,15 +32,25 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCy-JD-t4f">
-                                <rect key="frame" x="180" y="442" width="240" height="30"/>
+                                <rect key="frame" x="180" y="471" width="240" height="30"/>
                                 <state key="normal" title="Facebook"/>
+                                <connections>
+                                    <action selector="actionFacebookLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="K68-6R-7f1"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Don't have an account? Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8te-mn-37J">
-                                <rect key="frame" x="20" y="384" width="560" height="21"/>
+                                <rect key="frame" x="20" y="442" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieT-WT-bal">
+                                <rect key="frame" x="281" y="350" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="actionLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9qC-6H-NfO"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XHG-hl-DBs">
                                 <rect key="frame" x="175" y="252" width="250" height="30"/>
                                 <constraints>
@@ -57,10 +67,12 @@
                             <constraint firstItem="Xm7-hs-Gxl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Ai-pj-bCV"/>
                             <constraint firstItem="Ym0-cT-5xE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FXS-sv-ERQ"/>
                             <constraint firstItem="8te-mn-37J" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NS3-5p-mVj"/>
+                            <constraint firstItem="ieT-WT-bal" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="egF-Te-vlu"/>
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="c0h-tJ-sHU" kind="presentation" id="1PZ-nK-mg6"/>
+                        <outlet property="tfEmail" destination="XHG-hl-DBs" id="b3Q-yK-kmf"/>
+                        <segue destination="c0h-tJ-sHU" kind="presentation" identifier="toTabView" id="e7v-1O-urn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -104,7 +116,7 @@
         <!--Item 1-->
         <scene sceneID="qQQ-RN-PRV">
             <objects>
-                <viewController id="5UI-sW-aA9" sceneMemberID="viewController">
+                <viewController id="5UI-sW-aA9" customClass="MapViewController" customModule="baumap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F2T-08-oLo"/>
                         <viewControllerLayoutGuide type="bottom" id="nPl-9c-xIL"/>
@@ -126,6 +138,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="ViF-2t-eLe"/>
+                    <connections>
+                        <outlet property="map" destination="8im-4k-6lk" id="EyO-ll-sJ8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uvr-RR-4oD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
