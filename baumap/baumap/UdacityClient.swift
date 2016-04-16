@@ -16,7 +16,9 @@ class UdacityClient: NSObject {
     //MARK: Constants
     struct Constants {
         // MARK: URLs
-        static let AuthorizationURL : String = "https://www.udacity.com/api/session"
+        static let BaseURL: String = "https://www.udacity.com/api/"
+        static let URLSession: String = BaseURL+"session"
+        static let URLGetInfo: String = BaseURL+"users/"
         static let NSDefaultsKeyForSession: String = "udacitySession"
         static let NSDefaultsKeyForSessionExpiration: String = "udacitySessionExpiration"
         static let NSDefaultsKeyForSessionAccountKey: String = "udacitySessionAccountKey"
@@ -31,7 +33,7 @@ class UdacityClient: NSObject {
 * Method Type: POST {udacity:{username:"",password:""}}
 */
     func authenticate(email: String, password: String, completionHandler: (result: udacitySession, error: NSError?) -> Void) -> NSURLSessionDataTask {
-        let request = NSMutableURLRequest(URL: NSURL(string: Constants.AuthorizationURL)!)
+        let request = NSMutableURLRequest(URL: NSURL(string: Constants.URLSession)!)
         
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -84,7 +86,7 @@ class UdacityClient: NSObject {
     // MARK: LOGOUT
     func logout(completionHandler: (result: AnyObject?, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: Constants.URLSession")!)
         request.HTTPMethod = "DELETE"
         var xsrfCookie: NSHTTPCookie? = nil
         let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
@@ -116,6 +118,32 @@ class UdacityClient: NSObject {
         }
         task.resume()
         
+        
+        return task
+    }
+    
+    //MARK: USER PUBLIC DATA
+    func getPublicDataFromUserID(userID: String, completionHandler: (result:AnyObject?, error: NSError?) -> Void ) -> NSURLSessionDataTask {
+        let request = NSMutableURLRequest(URL: NSURL(string: Constants.URLGetInfo + userID)!)
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            func sendError(error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandler(result: nil, error: NSError(domain: "authenticate", code: 1, userInfo: userInfo))
+            }
+            
+            //Was there an error?
+            guard error == nil,
+                let data = data else {
+                    sendError("Error while trying to authenticate: \(error)")
+                    return
+            }
+            
+            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+        }
+        task.resume()
         
         return task
     }

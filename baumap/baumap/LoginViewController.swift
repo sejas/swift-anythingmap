@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
         print("loging with user\(email) password:\(password)")
         UdacityClient.sharedInstance().authenticate(email, password: password) { (session, error) in
             guard nil == error else {
-                self.showError("Error", message: "Error: \(error)")
+                self.showError("Error", message: "Error: \(error?.localizedDescription)")
                 print("error",error)
                 return
             }
@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
     // Mark: General Helpers
     func showError(title: String, message: String) {
         let alertController = UIAlertController(title: title, message:
-            message, preferredStyle: UIAlertControllerStyle.Alert)
+            "\(message)", preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
         performUIUpdatesOnMain({self.presentViewController(alertController, animated: true, completion: nil)})
     }
