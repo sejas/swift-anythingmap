@@ -43,7 +43,7 @@ class NetworkHelper: NSObject {
     
     // MARK: Request helper
     private func requestHelper(request: NSURLRequest, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
-        
+        print("NetworkHelper requestHelper request:",request)
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             func sendError(error: String) {
                 print(error)
@@ -56,6 +56,7 @@ class NetworkHelper: NSObject {
                 return
             }
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                print("NetworkHelper requestHelper error 2xx:",response)
                 sendError("Your request returned a status code other than 2xx!")
                 return
             }
@@ -85,8 +86,8 @@ class NetworkHelper: NSObject {
     }
     
     // add headers to mutable request
-    private func requestFromHeaders(URL: NSURL, headers: [String:String]?) -> NSMutableURLRequest {
-        let request = NSMutableURLRequest(URL:URL)
+    private func requestFromHeaders(url: NSURL, headers: [String:String]?) -> NSMutableURLRequest {
+        let request = NSMutableURLRequest(URL:url)
         guard let headers = headers else {
             return request
         }

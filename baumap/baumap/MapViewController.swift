@@ -15,7 +15,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //Get locations from api
+        getParseLocations()
         
         //Init map
         
@@ -103,6 +104,21 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     //        }
     //    }
     
+    
+    
+    
+    //MARK: Network Request
+    func getParseLocations() {
+        ParseClient.sharedInstance().getStudentLocations { (result, error) in
+            guard nil == error else {
+                print("Error receiving the student locations",error)
+                self.showError("", message: "Error receiving the student locations")
+                return
+            }
+            
+            print("getParseLocations: ",result)
+        }
+    }
     // MARK: - Sample Data
     
     // Some sample data. This is a dictionary that is more or less similar to the
@@ -158,6 +174,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         ]
     }
 
+    //MARK: UserInteractions
     @IBAction func actionLogout(sender: AnyObject) {
         UdacityClient.sharedInstance().logout({(result,error) in
             guard nil == error else {

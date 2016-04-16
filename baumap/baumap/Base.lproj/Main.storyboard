@@ -49,7 +49,7 @@
                                     <constraint firstAttribute="width" constant="250" id="zLb-2D-0GA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XHG-hl-DBs">
                                 <rect key="frame" x="175" y="252" width="250" height="30"/>
@@ -155,7 +155,7 @@
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0RB-A4-woa">
                                                     <rect key="frame" x="494" y="6" width="86" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="list"/>
+                                                    <state key="normal" image="list"/>
                                                     <connections>
                                                         <action selector="actionGeoLocate:" destination="5UI-sW-aA9" eventType="touchUpInside" id="Ueo-vc-0xn"/>
                                                     </connections>
@@ -165,7 +165,7 @@
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FYZ-fb-ljq">
                                                     <rect key="frame" x="400" y="6" width="86" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="pin"/>
+                                                    <state key="normal" image="pin"/>
                                                     <connections>
                                                         <action selector="actionUpdate:" destination="5UI-sW-aA9" eventType="touchUpInside" id="a2y-Qb-vy8"/>
                                                     </connections>

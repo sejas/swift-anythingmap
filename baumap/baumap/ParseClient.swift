@@ -13,19 +13,30 @@ class ParseClient: NSObject {
     struct Constants {
         // MARK: URLs
         static let BaseURL: String = "https://api.parse.com/1/classes/"
-        static let URLStudentLocation: String = BaseURL+"StudentLocation"
+        static let URLStudentLocations: String = BaseURL+"StudentLocation"
         static let ApplicationID: String = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
         static let APIKey: String = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
         static let ApplicationIDHeaderKey: String = "X-Parse-Application-Id"
         static let APIKeyHeaderKey: String = "X-Parse-REST-API-Key"
     }
+    let headersAuth = [
+        Constants.ApplicationIDHeaderKey: Constants.ApplicationID,
+        Constants.APIKeyHeaderKey: Constants.APIKey
+    ]
     
     func getStudentLocations(completionHandler: (result: AnyObject!, error: NSError?) -> Void){
-        let headers = [
-            Constants.ApplicationID: Constants.ApplicationIDHeaderKey,
-            Constants.APIKey: Constants.APIKeyHeaderKey
-        ]
-        NetworkHelper.sharedInstance().getRequest(Constants.URLStudentLocation, headers: headers, completionHandlerForGET: completionHandler)
+        NetworkHelper.sharedInstance().getRequest(Constants.URLStudentLocations, headers: headersAuth, completionHandlerForGET: completionHandler)
         
     }
+    
+    
+    // MARK: Shared Instance
+    class func sharedInstance() -> ParseClient {
+        struct Singleton {
+            static var sharedInstance = ParseClient()
+        }
+        return Singleton.sharedInstance
+    }
+    
+    
 }
