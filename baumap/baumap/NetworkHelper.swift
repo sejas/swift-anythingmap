@@ -14,8 +14,13 @@ class NetworkHelper: NSObject {
     
     // MARK: GET
     func getRequest(urlString: String, headers: [String:String]?, completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
-
-        let request = NSMutableURLRequest(URL: convertURL(urlString, completionHandlerForConvertURL: completionHandlerForGET))
+        guard let url = NSURL(string: urlString) else {
+            let userInfo = [NSLocalizedDescriptionKey : "Error parsin URL \(urlString)"]
+            completionHandlerForGET(result: nil, error: NSError(domain: "NetworkHelper", code: 1, userInfo: userInfo))
+            return NSURLSessionDataTask()
+        }
+        
+        let request = NSMutableURLRequest(URL: url)
         
         return requestHelper(request, completionHandler: completionHandlerForGET)
     }
@@ -61,15 +66,6 @@ class NetworkHelper: NSObject {
         return task
     }
     //MARK: Helpers
-    //
-    private func convertURL(urlString: String, completionHandlerForConvertURL: (result: AnyObject!, error: NSError?) -> Void) -> NSURL {
-        guard let url = NSURL(string: urlString) else {
-            let userInfo = [NSLocalizedDescriptionKey : "Error parsin URL \(urlString)"]
-            completionHandlerForConvertURL(result: nil, error: NSError(domain: "NetworkHelper", code: 1, userInfo: userInfo))
-            return NSURL()
-        }
-        return url
-    }
     // given raw JSON, return a usable Foundation object
     private func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
         
