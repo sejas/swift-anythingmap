@@ -11,6 +11,8 @@
 		B124A5C01CC0E57D007813A3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5BF1CC0E57D007813A3 /* MapViewController.swift */; };
 		B124A5CA1CC144DE007813A3 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5C91CC144DE007813A3 /* UdacityClient.swift */; };
 		B124A5CF1CC19F51007813A3 /* GCDUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5CE1CC19F51007813A3 /* GCDUtils.swift */; };
+		B124A5D11CC228DF007813A3 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5D01CC228DF007813A3 /* ParseClient.swift */; };
+		B124A5D31CC22BE2007813A3 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5D21CC22BE2007813A3 /* NetworkHelper.swift */; };
 		B1D9D51F1CAF19E3005573F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D9D51E1CAF19E3005573F5 /* AppDelegate.swift */; };
 		B1D9D5211CAF19E3005573F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D9D5201CAF19E3005573F5 /* LoginViewController.swift */; };
 		B1D9D5241CAF19E3005573F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D9D5221CAF19E3005573F5 /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 		B124A5BF1CC0E57D007813A3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B124A5C91CC144DE007813A3 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		B124A5CE1CC19F51007813A3 /* GCDUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDUtils.swift; sourceTree = "<group>"; };
+		B124A5D01CC228DF007813A3 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		B124A5D21CC22BE2007813A3 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		B1D9D51B1CAF19E3005573F5 /* baumap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = baumap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D9D51E1CAF19E3005573F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1D9D5201CAF19E3005573F5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +66,7 @@
 		B124A5C31CC143F0007813A3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B124A5D21CC22BE2007813A3 /* NetworkHelper.swift */,
 				B124A5C41CC143FB007813A3 /* Clients */,
 			);
 			name = Model;
@@ -115,6 +120,7 @@
 		B124A5CD1CC1456B007813A3 /* Parse */ = {
 			isa = PBXGroup;
 			children = (
+				B124A5D01CC228DF007813A3 /* ParseClient.swift */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -219,8 +225,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B124A5D31CC22BE2007813A3 /* NetworkHelper.swift in Sources */,
 				B124A5CF1CC19F51007813A3 /* GCDUtils.swift in Sources */,
 				B124A5CA1CC144DE007813A3 /* UdacityClient.swift in Sources */,
+				B124A5D11CC228DF007813A3 /* ParseClient.swift in Sources */,
 				B1D9D5211CAF19E3005573F5 /* LoginViewController.swift in Sources */,
 				B124A5BA1CBEE223007813A3 /* TableObjectesViewController.swift in Sources */,
 				B1D9D51F1CAF19E3005573F5 /* AppDelegate.swift in Sources */,

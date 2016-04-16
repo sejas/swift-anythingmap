@@ -86,7 +86,7 @@ class UdacityClient: NSObject {
     // MARK: LOGOUT
     func logout(completionHandler: (result: AnyObject?, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        let request = NSMutableURLRequest(URL: NSURL(string: Constants.URLSession")!)
+        let request = NSMutableURLRequest(URL: NSURL(string: Constants.URLSession)!)
         request.HTTPMethod = "DELETE"
         var xsrfCookie: NSHTTPCookie? = nil
         let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
