@@ -20,15 +20,19 @@ class NetworkHelper: NSObject {
             return NSURLSessionDataTask()
         }
         
-        let request = NSMutableURLRequest(URL: url)
-        
+        let request = requestFromHeaders(url, headers: headers)
         return requestHelper(request, completionHandler: completionHandlerForGET)
     }
     
     // MARK: POST
     func postRequest(urlString: String, headers: [String:String]?, jsonBody: String, completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        guard let url = NSURL(string: urlString) else {
+            let userInfo = [NSLocalizedDescriptionKey : "Error parsin URL \(urlString)"]
+            completionHandlerForPOST(result: nil, error: NSError(domain: "NetworkHelper", code: 1, userInfo: userInfo))
+            return NSURLSessionDataTask()
+        }
         
-        let request = NSMutableURLRequest(URL: convertURL(urlString, completionHandlerForConvertURL: completionHandlerForPOST))
+        let request = requestFromHeaders(url, headers: headers)
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -81,7 +85,8 @@ class NetworkHelper: NSObject {
     }
     
     // add headers to mutable request
-    private func addHeadersToRequest(headers: [String:String]?, request: NSMutableURLRequest) -> NSMutableURLRequest {
+    private func requestFromHeaders(URL: NSURL, headers: [String:String]?) -> NSMutableURLRequest {
+        let request = NSMutableURLRequest(URL:URL)
         guard let headers = headers else {
             return request
         }
