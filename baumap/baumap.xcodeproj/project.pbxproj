@@ -13,6 +13,7 @@
 		B124A5CF1CC19F51007813A3 /* GCDUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5CE1CC19F51007813A3 /* GCDUtils.swift */; };
 		B124A5D11CC228DF007813A3 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5D01CC228DF007813A3 /* ParseClient.swift */; };
 		B124A5D31CC22BE2007813A3 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5D21CC22BE2007813A3 /* NetworkHelper.swift */; };
+		B1CD820B1CC2C24E0089DACF /* ChoosePlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CD820A1CC2C24E0089DACF /* ChoosePlaceViewController.swift */; };
 		B1D9D51F1CAF19E3005573F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D9D51E1CAF19E3005573F5 /* AppDelegate.swift */; };
 		B1D9D5211CAF19E3005573F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D9D5201CAF19E3005573F5 /* LoginViewController.swift */; };
 		B1D9D5241CAF19E3005573F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D9D5221CAF19E3005573F5 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		B124A5CE1CC19F51007813A3 /* GCDUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDUtils.swift; sourceTree = "<group>"; };
 		B124A5D01CC228DF007813A3 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		B124A5D21CC22BE2007813A3 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		B1CD820A1CC2C24E0089DACF /* ChoosePlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoosePlaceViewController.swift; sourceTree = "<group>"; };
 		B1D9D51B1CAF19E3005573F5 /* baumap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = baumap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D9D51E1CAF19E3005573F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1D9D5201CAF19E3005573F5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -47,20 +49,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B124A5B81CBEE1FB007813A3 /* table */ = {
+		B124A5B81CBEE1FB007813A3 /* Table */ = {
 			isa = PBXGroup;
 			children = (
 				B124A5B91CBEE223007813A3 /* TableObjectesViewController.swift */,
 			);
-			name = table;
+			name = Table;
 			sourceTree = "<group>";
 		};
-		B124A5BE1CC0E56B007813A3 /* map */ = {
+		B124A5BE1CC0E56B007813A3 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				B1CD82091CC2C1E10089DACF /* AddAnnotation */,
 				B124A5BF1CC0E57D007813A3 /* MapViewController.swift */,
 			);
-			name = map;
+			name = Map;
 			sourceTree = "<group>";
 		};
 		B124A5C31CC143F0007813A3 /* Model */ = {
@@ -100,8 +103,8 @@
 		B124A5C71CC1442F007813A3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B124A5BE1CC0E56B007813A3 /* map */,
-				B124A5B81CBEE1FB007813A3 /* table */,
+				B124A5BE1CC0E56B007813A3 /* Map */,
+				B124A5B81CBEE1FB007813A3 /* Table */,
 				B1D9D5201CAF19E3005573F5 /* LoginViewController.swift */,
 			);
 			name = Controllers;
@@ -123,6 +126,14 @@
 				B124A5D01CC228DF007813A3 /* ParseClient.swift */,
 			);
 			name = Parse;
+			sourceTree = "<group>";
+		};
+		B1CD82091CC2C1E10089DACF /* AddAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				B1CD820A1CC2C24E0089DACF /* ChoosePlaceViewController.swift */,
+			);
+			name = AddAnnotation;
 			sourceTree = "<group>";
 		};
 		B1D9D5121CAF19E2005573F5 = {
@@ -232,6 +243,7 @@
 				B1D9D5211CAF19E3005573F5 /* LoginViewController.swift in Sources */,
 				B124A5BA1CBEE223007813A3 /* TableObjectesViewController.swift in Sources */,
 				B1D9D51F1CAF19E3005573F5 /* AppDelegate.swift in Sources */,
+				B1CD820B1CC2C24E0089DACF /* ChoosePlaceViewController.swift in Sources */,
 				B124A5C01CC0E57D007813A3 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
