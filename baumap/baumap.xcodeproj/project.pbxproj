@@ -14,6 +14,9 @@
 		B124A5D11CC228DF007813A3 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5D01CC228DF007813A3 /* ParseClient.swift */; };
 		B124A5D31CC22BE2007813A3 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5D21CC22BE2007813A3 /* NetworkHelper.swift */; };
 		B1CD820B1CC2C24E0089DACF /* ChoosePlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CD820A1CC2C24E0089DACF /* ChoosePlaceViewController.swift */; };
+		B1CD820E1CC3F59E0089DACF /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CD820D1CC3F59E0089DACF /* CustomButton.swift */; };
+		B1CD82101CC3F9DC0089DACF /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CD820F1CC3F9DC0089DACF /* TextFieldDelegate.swift */; };
+		B1CD82121CC3FD860089DACF /* AddLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CD82111CC3FD860089DACF /* AddLinkViewController.swift */; };
 		B1D9D51F1CAF19E3005573F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D9D51E1CAF19E3005573F5 /* AppDelegate.swift */; };
 		B1D9D5211CAF19E3005573F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D9D5201CAF19E3005573F5 /* LoginViewController.swift */; };
 		B1D9D5241CAF19E3005573F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D9D5221CAF19E3005573F5 /* Main.storyboard */; };
@@ -29,6 +32,9 @@
 		B124A5D01CC228DF007813A3 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		B124A5D21CC22BE2007813A3 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		B1CD820A1CC2C24E0089DACF /* ChoosePlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoosePlaceViewController.swift; sourceTree = "<group>"; };
+		B1CD820D1CC3F59E0089DACF /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		B1CD820F1CC3F9DC0089DACF /* TextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
+		B1CD82111CC3FD860089DACF /* AddLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLinkViewController.swift; sourceTree = "<group>"; };
 		B1D9D51B1CAF19E3005573F5 /* baumap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = baumap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D9D51E1CAF19E3005573F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1D9D5201CAF19E3005573F5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -131,9 +137,19 @@
 		B1CD82091CC2C1E10089DACF /* AddAnnotation */ = {
 			isa = PBXGroup;
 			children = (
+				B1CD82111CC3FD860089DACF /* AddLinkViewController.swift */,
 				B1CD820A1CC2C24E0089DACF /* ChoosePlaceViewController.swift */,
 			);
 			name = AddAnnotation;
+			sourceTree = "<group>";
+		};
+		B1CD820C1CC3F54F0089DACF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B1CD820D1CC3F59E0089DACF /* CustomButton.swift */,
+				B1CD820F1CC3F9DC0089DACF /* TextFieldDelegate.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		B1D9D5121CAF19E2005573F5 = {
@@ -158,6 +174,7 @@
 				B1D9D51E1CAF19E3005573F5 /* AppDelegate.swift */,
 				B124A5CE1CC19F51007813A3 /* GCDUtils.swift */,
 				B124A5C31CC143F0007813A3 /* Model */,
+				B1CD820C1CC3F54F0089DACF /* Views */,
 				B124A5C71CC1442F007813A3 /* Controllers */,
 				B124A5C81CC1444F007813A3 /* Assets */,
 				B1D9D52A1CAF19E3005573F5 /* Info.plist */,
@@ -236,10 +253,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1CD82121CC3FD860089DACF /* AddLinkViewController.swift in Sources */,
 				B124A5D31CC22BE2007813A3 /* NetworkHelper.swift in Sources */,
 				B124A5CF1CC19F51007813A3 /* GCDUtils.swift in Sources */,
 				B124A5CA1CC144DE007813A3 /* UdacityClient.swift in Sources */,
 				B124A5D11CC228DF007813A3 /* ParseClient.swift in Sources */,
+				B1CD82101CC3F9DC0089DACF /* TextFieldDelegate.swift in Sources */,
+				B1CD820E1CC3F59E0089DACF /* CustomButton.swift in Sources */,
 				B1D9D5211CAF19E3005573F5 /* LoginViewController.swift in Sources */,
 				B124A5BA1CBEE223007813A3 /* TableObjectesViewController.swift in Sources */,
 				B1D9D51F1CAF19E3005573F5 /* AppDelegate.swift in Sources */,
