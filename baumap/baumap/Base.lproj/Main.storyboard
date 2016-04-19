@@ -346,10 +346,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WAS-nN-kAv" userLabel="Header">
-                                <rect key="frame" x="0.0" y="191" width="600" height="255"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WAS-nN-kAv" userLabel="Header">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="255"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" text="Enter Your Location Here" placeholder="Enter Your Location Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ye3-p9-Xvw">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" text="Enter Your Location Here" placeholder="Enter Your Location Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ye3-p9-Xvw">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="255"/>
                                         <color key="backgroundColor" red="0.0" green="0.37579971610000001" blue="0.78341666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -359,32 +359,20 @@
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.37579971610000001" blue="0.78341666669999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Ye3-p9-Xvw" secondAttribute="bottom" id="3LI-tF-NWa"/>
-                                    <constraint firstItem="Ye3-p9-Xvw" firstAttribute="top" secondItem="WAS-nN-kAv" secondAttribute="top" id="CiJ-5Z-upd"/>
-                                    <constraint firstItem="Ye3-p9-Xvw" firstAttribute="leading" secondItem="WAS-nN-kAv" secondAttribute="leading" id="HW8-Rn-now"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ye3-p9-Xvw" secondAttribute="trailing" id="yDi-Fp-PQR"/>
-                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DcE-H7-kug" userLabel="Footer">
-                                <rect key="frame" x="0.0" y="446" width="600" height="154"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DcE-H7-kug" userLabel="Footer">
+                                <rect key="frame" x="0.0" y="254" width="600" height="346"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CR2-aD-1os" customClass="CustomButton" customModule="baumap" customModuleProvider="target">
-                                        <rect key="frame" x="219" y="55" width="163" height="44"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Submit">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="actionSubmit:" destination="RpL-Al-Iwd" eventType="touchUpInside" id="jCq-fU-eKn"/>
-                                        </connections>
-                                    </button>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="1rr-do-fGH">
+                                        <rect key="frame" x="180" y="86" width="240" height="128"/>
+                                    </mapView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95994791670000001" green="0.95994791670000001" blue="0.95994791670000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="154" id="Pkg-jb-KiF"/>
-                                    <constraint firstItem="CR2-aD-1os" firstAttribute="centerX" secondItem="DcE-H7-kug" secondAttribute="centerX" id="q9e-Z8-xys"/>
-                                    <constraint firstItem="CR2-aD-1os" firstAttribute="centerY" secondItem="DcE-H7-kug" secondAttribute="centerY" id="v1T-DL-5zy"/>
+                                    <constraint firstAttribute="trailing" secondItem="1rr-do-fGH" secondAttribute="trailing" id="Hix-Sw-jyL"/>
+                                    <constraint firstItem="1rr-do-fGH" firstAttribute="top" secondItem="DcE-H7-kug" secondAttribute="top" id="QGP-Ub-oDH"/>
+                                    <constraint firstAttribute="bottom" secondItem="1rr-do-fGH" secondAttribute="bottom" id="TEi-0J-xh3"/>
+                                    <constraint firstItem="1rr-do-fGH" firstAttribute="leading" secondItem="DcE-H7-kug" secondAttribute="leading" id="mXv-EV-bW0"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csf-Pq-IVz">
@@ -392,6 +380,16 @@
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="actionClose:" destination="RpL-Al-Iwd" eventType="touchUpInside" id="JMm-oc-p0s"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CR2-aD-1os" customClass="CustomButton" customModule="baumap" customModuleProvider="target">
+                                <rect key="frame" x="218" y="278" width="163" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionSubmit:" destination="RpL-Al-Iwd" eventType="touchUpInside" id="jCq-fU-eKn"/>
                                 </connections>
                             </button>
                         </subviews>
