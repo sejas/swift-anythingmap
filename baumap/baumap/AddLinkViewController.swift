@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class AddLinkViewController: UIViewController {
     
@@ -14,6 +15,10 @@ class AddLinkViewController: UIViewController {
     @IBOutlet weak var tfLink: UITextField!
     
     let textFieldDelegate = TextFieldDelegate()
+    
+    var coordinates:CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var placeString:String = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
