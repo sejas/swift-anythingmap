@@ -36,7 +36,13 @@ class AddLinkViewController: UIViewController, MKMapViewDelegate {
         annotation.title = placeString
         // Finally we place the annotation in an array of annotations.
         annotations.append(annotation)
-        self.map.addAnnotations(annotations)
+        map.addAnnotations(annotations)
+        map.setCenterCoordinate(self.coordinates, animated: false)
+        setZoomMap(self.coordinates)
+    }
+    func setZoomMap(coordinate:CLLocationCoordinate2D) {
+        let viewRegion = MKCoordinateRegionMakeWithDistance(coordinate, 1000, 1000);
+        map.setRegion(viewRegion,animated: false)
     }
     
     // MARK: - MKMapViewDelegate

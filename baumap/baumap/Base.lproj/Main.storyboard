@@ -349,7 +349,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAS-nN-kAv" userLabel="Header">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="255"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" text="Add your link here" placeholder="Enter Your Location Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ye3-p9-Xvw">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" text="Enter a Link to Share Here" placeholder="Enter a Link to Share Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ye3-p9-Xvw">
                                         <rect key="frame" x="0.0" y="82" width="600" height="173"/>
                                         <color key="backgroundColor" red="0.0" green="0.37579971610000001" blue="0.78341666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
