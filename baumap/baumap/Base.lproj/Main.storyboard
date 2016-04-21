@@ -349,7 +349,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WAS-nN-kAv" userLabel="Header">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="255"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" text="Enter Your Location Here" placeholder="Enter Your Location Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ye3-p9-Xvw">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" text="Add your link here" placeholder="Enter Your Location Here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ye3-p9-Xvw">
                                         <rect key="frame" x="0.0" y="82" width="600" height="173"/>
                                         <color key="backgroundColor" red="0.0" green="0.37579971610000001" blue="0.78341666669999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -369,7 +369,9 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Csf-Pq-IVz">
                                 <rect key="frame" x="532" y="20" width="48" height="30"/>
-                                <state key="normal" title="Cancel"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="actionClose:" destination="RpL-Al-Iwd" eventType="touchUpInside" id="JMm-oc-p0s"/>
                                 </connections>
@@ -417,6 +419,7 @@
                     </view>
                     <connections>
                         <outlet property="btnSubmit" destination="CR2-aD-1os" id="W0Y-1U-mMO"/>
+                        <outlet property="map" destination="1rr-do-fGH" id="hsc-W5-QtS"/>
                         <outlet property="tfLink" destination="Ye3-p9-Xvw" id="Cpo-42-SY9"/>
                     </connections>
                 </viewController>

@@ -8,9 +8,11 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
-class AddLinkViewController: UIViewController {
+class AddLinkViewController: UIViewController, MKMapViewDelegate {
     
+    @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var btnSubmit: CustomButton!
     @IBOutlet weak var tfLink: UITextField!
     
@@ -23,7 +25,42 @@ class AddLinkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tfLink.delegate = textFieldDelegate
+        addLocationMap()
     }
+    
+    // MARK: MAP
+    func addLocationMap() {
+        var annotations = [MKPointAnnotation]()
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = self.coordinates
+        annotation.title = placeString
+        // Finally we place the annotation in an array of annotations.
+        annotations.append(annotation)
+        self.map.addAnnotations(annotations)
+    }
+    
+    // MARK: - MKMapViewDelegate
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let reuseId = "pin"
+        
+        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView
+        
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor = UIColor.redColor()
+            pinView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+        }
+        else {
+            pinView!.annotation = annotation
+        }
+        
+        return pinView
+    }
+
+    
+    
     
     @IBAction func actionClose(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
