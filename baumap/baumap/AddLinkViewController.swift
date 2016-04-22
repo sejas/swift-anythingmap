@@ -41,7 +41,7 @@ class AddLinkViewController: UIViewController, MKMapViewDelegate {
         setZoomMap(self.coordinates)
     }
     func setZoomMap(coordinate:CLLocationCoordinate2D) {
-        let viewRegion = MKCoordinateRegionMakeWithDistance(coordinate, 2000, 2000);
+        let viewRegion = MKCoordinateRegionMakeWithDistance(coordinate, 2100, 2100);
         map.setRegion(viewRegion,animated: false)
     }
     
