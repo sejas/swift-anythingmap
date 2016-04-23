@@ -13,9 +13,6 @@ class ChoosePlaceViewController: UIViewController {
     @IBOutlet weak var btnFindOnMap: CustomButton!
     @IBOutlet weak var tfLocation: UITextField!
     
-    var coordinates:CLLocationCoordinate2D = CLLocationCoordinate2D()
-    var placeString:String = ""
-    
     let textFieldDelegate = TextFieldDelegate()
     
     override func viewDidLoad() {
@@ -46,30 +43,20 @@ class ChoosePlaceViewController: UIViewController {
             //            print("placemarks",placemarks)
             print("coordinates",coordinates)
             
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = storyboard.instantiateViewControllerWithIdentifier("AddLinkView") as! AddLinkViewController
-//            vc.coordinates = coordinates
-//            vc.placeString = placeString
-            
-            self.coordinates = coordinates
-            self.placeString = placeString
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("AddLinkView") as! AddLinkViewController
+            vc.coordinates = coordinates
+            vc.placeString = placeString
             performUIUpdatesOnMain({
-//                                self.dismissViewControllerAnimated(false, completion: nil)
-//                                self.presentViewController(vc, animated: false, completion: nil)
+                self.presentViewController(vc, animated: true, completion: nil)
                 
-                self.performSegueWithIdentifier("toAddLink", sender: nil)
             })
         })
-        
-        //        performSegueWithIdentifier("toAddLink", sender: nil)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let vc = segue.destinationViewController as! AddLinkViewController
-        vc.coordinates = coordinates
-        vc.placeString = placeString
-        
     }
     
     
+    //Mark: Keyboard
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        tfLocation.resignFirstResponder()        
+    }
 }

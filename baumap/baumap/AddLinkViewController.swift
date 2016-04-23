@@ -19,8 +19,7 @@ class AddLinkViewController: UIViewController, MKMapViewDelegate {
     let textFieldDelegate = TextFieldDelegate()
     
     var coordinates:CLLocationCoordinate2D = CLLocationCoordinate2D()
-    var placeString:String = ""
-    
+    var placeString:String = ""    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +68,8 @@ class AddLinkViewController: UIViewController, MKMapViewDelegate {
     
     
     @IBAction func actionClose(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        //Hide parent viewcontroller
+         self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func actionSubmit(sender: AnyObject) {
         print("Submit")
