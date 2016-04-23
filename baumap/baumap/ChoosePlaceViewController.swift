@@ -13,6 +13,9 @@ class ChoosePlaceViewController: UIViewController {
     @IBOutlet weak var btnFindOnMap: CustomButton!
     @IBOutlet weak var tfLocation: UITextField!
     
+    var coordinates:CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var placeString:String = ""
+    
     let textFieldDelegate = TextFieldDelegate()
     
     override func viewDidLoad() {
@@ -20,9 +23,6 @@ class ChoosePlaceViewController: UIViewController {
         tfLocation.delegate = textFieldDelegate
     }
     
-    
-    
-
     @IBAction func actionClose(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -40,26 +40,36 @@ class ChoosePlaceViewController: UIViewController {
             }
             guard let placemark = placemarks?.first,
                 let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate else {
-                print("Address not found")
-                return
+                    print("Address not found")
+                    return
             }
-//            print("placemarks",placemarks)
+            //            print("placemarks",placemarks)
             print("coordinates",coordinates)
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("AddLinkView") as! AddLinkViewController
-            vc.coordinates = coordinates
-            vc.placeString = placeString
-            performUIUpdatesOnMain({self.presentViewController(vc, animated: false, completion: nil)})
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = storyboard.instantiateViewControllerWithIdentifier("AddLinkView") as! AddLinkViewController
+//            vc.coordinates = coordinates
+//            vc.placeString = placeString
+            
+            self.coordinates = coordinates
+            self.placeString = placeString
+            performUIUpdatesOnMain({
+//                                self.dismissViewControllerAnimated(false, completion: nil)
+//                                self.presentViewController(vc, animated: false, completion: nil)
+                
+                self.performSegueWithIdentifier("toAddLink", sender: nil)
+            })
         })
         
         //        performSegueWithIdentifier("toAddLink", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        //        [[self view] addSubview:newSubView];
-        //        [oldView removeFromSuperview];
-//        let viewAddLink = segue.destinationViewController as! AddLinkViewController
-//        self.view.addSubview(viewAddLink)
+        let vc = segue.destinationViewController as! AddLinkViewController
+        vc.coordinates = coordinates
+        vc.placeString = placeString
+        
     }
+    
+    
 }
