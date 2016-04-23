@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ParseClient: NSObject {
     //MARK: Constants
@@ -24,9 +25,24 @@ class ParseClient: NSObject {
         Constants.APIKeyHeaderKey: Constants.APIKey
     ]
     
+    //MARK: REST API Methods
     func getStudentLocations(completionHandler: (result: AnyObject!, error: NSError?) -> Void){
         NetworkHelper.sharedInstance().getRequest(Constants.URLStudentLocations, headers: headersAuth, completionHandlerForGET: completionHandler)
+    }
+    
+    func postStudentLocations(user: NSDictionary, placeString: String, mediaURL: String, coordinates: CLLocationCoordinate2D, completionHandler: (result: AnyObject!, error: NSError?) -> Void){
+        guard let uniqueKey = user["key"],
+            let firstName = user["first_name"],
+            let lastName = user["last_name"] else {
+                let userInfo = [NSLocalizedDescriptionKey : "Error parsin User, missing fields"]
+                let error = NSError(domain: "postStudentLocations", code: 1, userInfo: userInfo)
+                completionHandler(result: error, error: error)
+                return
+        }
         
+        let jsonBody = "{\"uniqueKey\": \"\(uniqueKey)\", \"firstName\": \"\(firstName)\", \"lastName\": \"\(lastName)\",\"mapString\": \"\(placeString)\", \"mediaURL\": \"\(mediaURL)\",\"latitude\": \(coordinates.latitude), \"longitude\": \(coordinates.longitude)}"
+        print("postStudentLocations",jsonBody)
+        NetworkHelper.sharedInstance().postRequest(Constants.URLStudentLocations, headers: headersAuth, jsonBody: jsonBody, completionHandlerForPOST: completionHandler)
     }
     
     

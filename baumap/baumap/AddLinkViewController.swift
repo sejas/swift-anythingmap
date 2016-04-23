@@ -19,7 +19,7 @@ class AddLinkViewController: UIViewController, MKMapViewDelegate {
     let textFieldDelegate = TextFieldDelegate()
     
     var coordinates:CLLocationCoordinate2D = CLLocationCoordinate2D()
-    var placeString:String = ""    
+    var placeString:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
