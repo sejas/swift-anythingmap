@@ -72,7 +72,36 @@ class AddLinkViewController: UIViewController, MKMapViewDelegate {
          self.presentingViewController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func actionSubmit(sender: AnyObject) {
-        print("Submit")
+        guard let mediaURL = tfLink.text else {
+            print("Error, No text in text field Location")
+            return
+        }
+        //Get user info
+        UdacityClient.sharedInstance().getPublicDataFromUserID() { (result, error) in
+            guard error == nil else {
+                print("we couldn't get user info",error)
+                return
+            }
+            guard let userInfo = result as? NSDictionary else {
+                print("user info is not dictionary",error)
+                return
+            }
+            
+            //Save location into Parse
+            ParseClient.sharedInstance().postStudentLocations(userInfo, placeString: self.placeString, mediaURL: mediaURL, coordinates: self.coordinates, completionHandler: { (result, error) in
+                guard error == nil else {
+                    print("Error saving location into Parse",error)
+                    return
+                }
+                
+                print("Success location saved into Parse",result)
+            })
+            print("result getPublicDataFromUserID", result)
+        }
+        
     }
-
+    //Mark: Keyboard
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        tfLink.resignFirstResponder()
+    }
 }

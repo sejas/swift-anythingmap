@@ -31,7 +31,9 @@ class ParseClient: NSObject {
     }
     
     func postStudentLocations(user: NSDictionary, placeString: String, mediaURL: String, coordinates: CLLocationCoordinate2D, completionHandler: (result: AnyObject!, error: NSError?) -> Void){
-        guard let uniqueKey = user["key"],
+        guard
+            let user = user["user"],
+            let uniqueKey = user["key"],
             let firstName = user["first_name"],
             let lastName = user["last_name"] else {
                 let userInfo = [NSLocalizedDescriptionKey : "Error parsin User, missing fields"]

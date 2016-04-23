@@ -60,10 +60,18 @@ class NetworkHelper: NSObject {
                 sendError("Your request returned a status code other than 2xx!")
                 return
             }
-            guard let data = data else {
+            guard var data = data else {
                 sendError("No data was returned by the request!")
                 return
             }
+            
+            //AVOID UDACITY SECURITY
+            //If is udacity call, we must remove 5 security characters from data
+            if((request.URL!.host!.lowercaseString.rangeOfString("udacity")) != nil){
+                print("it is udacity: \(request.URL!.host!.lowercaseString)")
+                data = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+            }
+            
             self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandler)
         }
         task.resume()

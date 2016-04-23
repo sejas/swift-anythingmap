@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
             
             print(session)
             //Save session for autologin
-            UdacityClient.sharedInstance().saveSession(session)
+            UdacityClient.sharedInstance().saveSession(session, email: email)
             performUIUpdatesOnMain({
                 self.tfEmail.text = ""
                 self.tfPassword.text = ""

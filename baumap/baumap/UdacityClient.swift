@@ -19,19 +19,21 @@ class UdacityClient: NSObject {
         static let BaseURL: String = "https://www.udacity.com/api/"
         static let URLSession: String = BaseURL+"session"
         static let URLGetInfo: String = BaseURL+"users/"
+        
         static let NSDefaultsKeyForSession: String = "udacitySession"
         static let NSDefaultsKeyForSessionExpiration: String = "udacitySessionExpiration"
         static let NSDefaultsKeyForSessionAccountKey: String = "udacitySessionAccountKey"
+        static let NSDefaultsKeyForEmail: String = "udacityEmail"
     }
     
     let prefs = NSUserDefaults.standardUserDefaults()
     let udacitySessionError = udacitySession(session_id: "",account_key: "",expiration: "")
     
     // MARK: LOGIN
-/*
-* Make the POST CALL TO THE UDACITY API and return a valid session or error
-* Method Type: POST {udacity:{username:"",password:""}}
-*/
+    /*
+     * Make the POST CALL TO THE UDACITY API and return a valid session or error
+     * Method Type: POST {udacity:{username:"",password:""}}
+     */
     func authenticate(email: String, password: String, completionHandler: (result: udacitySession, error: NSError?) -> Void) -> NSURLSessionDataTask {
         let request = NSMutableURLRequest(URL: NSURL(string: Constants.URLSession)!)
         
@@ -123,29 +125,13 @@ class UdacityClient: NSObject {
     }
     
     //MARK: USER PUBLIC DATA
-    func getPublicDataFromUserID(userID: String, completionHandler: (result:AnyObject?, error: NSError?) -> Void ) -> NSURLSessionDataTask {
-        let request = NSMutableURLRequest(URL: NSURL(string: Constants.URLGetInfo + userID)!)
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request) { data, response, error in
-            func sendError(error: String) {
-                print(error)
-                let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandler(result: nil, error: NSError(domain: "authenticate", code: 1, userInfo: userInfo))
-            }
-            
-            //Was there an error?
-            guard error == nil,
-                let data = data else {
-                    sendError("Error while trying to authenticate: \(error)")
-                    return
-            }
-            
-            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
-            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+    func getPublicDataFromUserID(completionHandler: (result:AnyObject?, error: NSError?) -> Void ) -> NSURLSessionDataTask {
+        guard let userID = loadSessionEmail() else {
+            let userInfo = [NSLocalizedDescriptionKey : "No USER ID saved in NSUserDefaults"]
+            completionHandler(result: nil, error: NSError(domain: "getPublicDataFromUserID", code: 1, userInfo: userInfo))
+            return NSURLSessionDataTask()
         }
-        task.resume()
-        
-        return task
+        return NetworkHelper.sharedInstance().getRequest(Constants.URLGetInfo + userID, headers: nil, completionHandlerForGET: completionHandler)
     }
     
     
@@ -164,10 +150,11 @@ class UdacityClient: NSObject {
     }
     
     // MARK: NSDefaults to save, restore and delte the Udacity session
-    func saveSession(session: udacitySession) {
+    func saveSession(session: udacitySession, email: String) {
         prefs.setValue(session.session_id, forKey: Constants.NSDefaultsKeyForSession)
         prefs.setValue(session.expiration, forKey: Constants.NSDefaultsKeyForSessionExpiration)
         prefs.setValue(session.account_key, forKey: Constants.NSDefaultsKeyForSessionAccountKey)
+        prefs.setValue(session.account_key, forKey: Constants.NSDefaultsKeyForEmail)
     }
     func loadSessionID() -> String? {
         guard let session_id = prefs.stringForKey(Constants.NSDefaultsKeyForSession) else{
@@ -176,10 +163,17 @@ class UdacityClient: NSObject {
         //TODO: Check if it is expired
         return session_id
     }
+    func loadSessionEmail() -> String? {
+        guard let email = prefs.stringForKey(Constants.NSDefaultsKeyForEmail) else{
+            return nil
+        }
+        return email
+    }
     func deleteSession() {
         prefs.removeObjectForKey(Constants.NSDefaultsKeyForSession)
         prefs.removeObjectForKey(Constants.NSDefaultsKeyForSessionExpiration)
         prefs.removeObjectForKey(Constants.NSDefaultsKeyForSessionAccountKey)
+        prefs.removeObjectForKey(Constants.NSDefaultsKeyForEmail)
     }
     
     
