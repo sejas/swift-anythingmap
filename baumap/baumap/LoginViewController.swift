@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
         print("loging with user\(email) password:\(password)")
         UdacityClient.sharedInstance().authenticate(email, password: password) { (session, error) in
             guard nil == error else {
-                self.showError("Error", message: "Error: \(error?.localizedDescription)")
+                self.showError("Login Error", message: error!.localizedDescription)
                 print("error",error)
                 return
             }

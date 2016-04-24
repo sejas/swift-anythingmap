@@ -42,7 +42,7 @@ class ParseClient: NSObject {
                 return
         }
         
-        let jsonBody = "{\"uniqueKey\": \"\(uniqueKey)\", \"firstName\": \"\(firstName)\", \"lastName\": \"\(lastName)\",\"mapString\": \"\(placeString)\", \"mediaURL\": \"\(mediaURL)\",\"latitude\": \(coordinates.latitude), \"longitude\": \(coordinates.longitude)}"
+        let jsonBody = "{\"uniqueKey\": \"\(uniqueKey!)\", \"firstName\": \"\(firstName!)\", \"lastName\": \"\(lastName!)\",\"mapString\": \"\(placeString)\", \"mediaURL\": \"\(mediaURL)\",\"latitude\": \(coordinates.latitude), \"longitude\": \(coordinates.longitude)}"
         print("postStudentLocations",jsonBody)
         NetworkHelper.sharedInstance().postRequest(Constants.URLStudentLocations, headers: headersAuth, jsonBody: jsonBody, completionHandlerForPOST: completionHandler)
     }
