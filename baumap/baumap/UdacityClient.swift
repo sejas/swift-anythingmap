@@ -35,40 +35,10 @@ class UdacityClient: NSObject {
      * Method Type: POST {udacity:{username:"",password:""}}
      */
     func authenticate(email: String, password: String, completionHandler: (result: udacitySession, error: NSError?) -> Void) -> NSURLSessionDataTask {
-        let request = NSMutableURLRequest(URL: NSURL(string: Constants.URLSession)!)
-        
-        request.HTTPMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPBody = "{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}".dataUsingEncoding(NSUTF8StringEncoding)
-
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request) { data, response, error in
-            func sendError(error: String) {
-                print(error)
-                let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandler(result: self.udacitySessionError, error: NSError(domain: "authenticate", code: 1, userInfo: userInfo))
-            }
-            
-            //Was there an error?
-            guard error == nil,
-                let data = data else {
-                sendError("Error while trying to authenticate: \(error)")
-                return
-            }
-   
-            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
-            let stringResonse = NSString(data: newData, encoding: NSUTF8StringEncoding)
-            print(stringResonse)
-            
-            self.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: {(result, error) in
-                self.parseAuthenticationWithCompletionHandler(result as? NSDictionary, completionHandler: completionHandler)
-            })
-        }
-        task.resume()
-
-        
-        return task
+        let jsonBody = "{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}"
+        return NetworkHelper.sharedInstance().postRequest(Constants.URLSession, headers: nil, jsonBody: jsonBody, completionHandlerForPOST: {(result, error) in
+            self.parseAuthenticationWithCompletionHandler(result as? NSDictionary, completionHandler: completionHandler)
+        })
     }
     //Parse and validate a JSON to return a valid Session or Error. Is a self.authenticate helper
     func parseAuthenticationWithCompletionHandler(authJson: NSDictionary?, completionHandler: (result: udacitySession,error: NSError?) -> Void) {
