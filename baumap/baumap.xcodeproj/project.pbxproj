@@ -22,6 +22,8 @@
 		B1D9D5241CAF19E3005573F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D9D5221CAF19E3005573F5 /* Main.storyboard */; };
 		B1D9D5261CAF19E3005573F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1D9D5251CAF19E3005573F5 /* Assets.xcassets */; };
 		B1D9D5291CAF19E3005573F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D9D5271CAF19E3005573F5 /* LaunchScreen.storyboard */; };
+		B1DA58D91CD026E900F3FB24 /* StudentLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DA58D81CD026E900F3FB24 /* StudentLocations.swift */; };
+		B1DA58DB1CD026F900F3FB24 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DA58DA1CD026F900F3FB24 /* StudentLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		B1D9D5251CAF19E3005573F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1D9D5281CAF19E3005573F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1D9D52A1CAF19E3005573F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1DA58D81CD026E900F3FB24 /* StudentLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocations.swift; sourceTree = "<group>"; };
+		B1DA58DA1CD026F900F3FB24 /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 		B124A5C31CC143F0007813A3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B1DA58D71CD0269200F3FB24 /* StudentLocationModel */,
 				B124A5D21CC22BE2007813A3 /* NetworkHelper.swift */,
 				B124A5C41CC143FB007813A3 /* Clients */,
 			);
@@ -182,6 +187,15 @@
 			path = baumap;
 			sourceTree = "<group>";
 		};
+		B1DA58D71CD0269200F3FB24 /* StudentLocationModel */ = {
+			isa = PBXGroup;
+			children = (
+				B1DA58D81CD026E900F3FB24 /* StudentLocations.swift */,
+				B1DA58DA1CD026F900F3FB24 /* StudentLocation.swift */,
+			);
+			name = StudentLocationModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -255,6 +269,7 @@
 			files = (
 				B1CD82121CC3FD860089DACF /* AddLinkViewController.swift in Sources */,
 				B124A5D31CC22BE2007813A3 /* NetworkHelper.swift in Sources */,
+				B1DA58DB1CD026F900F3FB24 /* StudentLocation.swift in Sources */,
 				B124A5CF1CC19F51007813A3 /* GCDUtils.swift in Sources */,
 				B124A5CA1CC144DE007813A3 /* UdacityClient.swift in Sources */,
 				B124A5D11CC228DF007813A3 /* ParseClient.swift in Sources */,
@@ -265,6 +280,7 @@
 				B1D9D51F1CAF19E3005573F5 /* AppDelegate.swift in Sources */,
 				B1CD820B1CC2C24E0089DACF /* ChoosePlaceViewController.swift in Sources */,
 				B124A5C01CC0E57D007813A3 /* MapViewController.swift in Sources */,
+				B1DA58D91CD026E900F3FB24 /* StudentLocations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
