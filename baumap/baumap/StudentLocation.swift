@@ -10,8 +10,19 @@ import MapKit
 
 struct StudentLocation {
     var coordinate: CLLocationCoordinate2D
-    var first: String
-    var last: String
+    var firstName: String
+    var lastName: String
     var mediaURL:  String
-
+    
+    init(fromDictionary: NSDictionary) {
+        // Notice that the float values are being used to create CLLocationDegree values.
+        // This is a version of the Double type.
+        let lat = CLLocationDegrees(fromDictionary["latitude"] as! Double)
+        let long = CLLocationDegrees(fromDictionary["longitude"] as! Double)
+        // The lat and long are used to create a CLLocationCoordinates2D instance.
+        coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        firstName = fromDictionary["firstName"] as! String
+        lastName = fromDictionary["lastName"] as! String
+        mediaURL = fromDictionary["mediaURL"] as! String
+    }
 }

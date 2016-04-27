@@ -13,7 +13,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var map: MKMapView!
     
-    var locations = [[String:AnyObject]]()
+    var locations = [StudentLocation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,24 +37,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // to create map annotations. This would be more stylish if the dictionaries were being
         // used to create custom structs. Perhaps StudentLocation structs.
         
-        for dictionary in locations {
-            // Notice that the float values are being used to create CLLocationDegree values.
-            // This is a version of the Double type.
-            let lat = CLLocationDegrees(dictionary["latitude"] as! Double)
-            let long = CLLocationDegrees(dictionary["longitude"] as! Double)
-            
-            // The lat and long are used to create a CLLocationCoordinates2D instance.
-            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-            
-            let first = dictionary["firstName"] as! String
-            let last = dictionary["lastName"] as! String
-            let mediaURL = dictionary["mediaURL"] as! String
+        for oneLocation in locations {
             
             // Here we create the annotation and set its coordiate, title, and subtitle properties
             let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = "\(first) \(last)"
-            annotation.subtitle = mediaURL
+            annotation.coordinate = oneLocation.coordinate
+            annotation.title = "\(oneLocation.firstName) \(oneLocation.lastName)"
+            annotation.subtitle = oneLocation.mediaURL
             
             // Finally we place the annotation in an array of annotations.
             annotations.append(annotation)
@@ -123,7 +112,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             print("getParseLocations: ",result)
             //TODO: validate response result
-            self.locations = result["results"] as! [[String : AnyObject]]
+            self.locations = StudentLocations.sharedInstance().saveAndReturnLocations(result["results"] as! [[String : AnyObject]])
             self.updateLocationsMap()
         }
     }
