@@ -103,16 +103,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     //MARK: Network Request
     func getParseLocationsAndRefreshMap() {
-        ParseClient.sharedInstance().getStudentLocations { (result, error) in
+        StudentLocations.sharedInstance().downloadLocationsWithCompletion { (locations, error) in
             guard nil == error else {
                 print("Error receiving the student locations",error)
                 self.showError("", message: "Error receiving the student locations")
                 return
             }
-            
-            print("getParseLocations: ",result)
-            //TODO: validate response result
-            self.locations = StudentLocations.sharedInstance().saveAndReturnLocations(result["results"] as! [[String : AnyObject]])
+            self.locations = locations
             self.updateLocationsMap()
         }
     }

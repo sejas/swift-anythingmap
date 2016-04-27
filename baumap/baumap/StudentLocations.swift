@@ -14,18 +14,29 @@ class StudentLocations: NSObject {
     
     func saveAndReturnLocations(locationsJSON: [[String : AnyObject]]) -> [StudentLocation] {
         locations = []
-        
         for dictionary in locationsJSON {
             locations.append(StudentLocation(fromDictionary: dictionary))
         }
-        
         return locations
     }
     
-    func getLocations() -> [StudentLocation] {
+    func getCachedLocations() -> [StudentLocation] {
         return locations
     }
     
+    func downloadLocationsWithCompletion(completionHandler:(locations: [StudentLocation], error: NSError? ) -> Void) {
+        ParseClient.sharedInstance().getStudentLocations { (result, error) in
+            guard nil == error else {
+                print("Error receiving the student locations",error)
+                let userInfo = [NSLocalizedDescriptionKey : "Error receiving the student locations"]
+                completionHandler(locations: [StudentLocation](), error: NSError(domain: "downloadLocationsWithCompletion", code: 1, userInfo: userInfo))
+                return
+            }
+            print("getParseLocations: ",result)
+            let locations = self.saveAndReturnLocations(result["results"] as! [[String : AnyObject]])
+            completionHandler(locations: locations, error: nil)
+        }
+    }
     
     // MARK: Shared Instance
     class func sharedInstance() -> StudentLocations {

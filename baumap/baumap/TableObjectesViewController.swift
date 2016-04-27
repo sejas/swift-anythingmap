@@ -9,30 +9,45 @@
 import UIKit
 
 class TableObjectesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     @IBOutlet weak var table: UITableView!
     
-    var objects = ["Uno","Dos", "Tres"]
+    var locations: [StudentLocation] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        getParseLocationsAndRefreshTable()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    //MARK: Network Request
+    func getParseLocationsAndRefreshTable() {
+        StudentLocations.sharedInstance().downloadLocationsWithCompletion { (locations, error) in
+            guard nil == error else {
+                print("Error receiving the student locations",error)
+                self.showError("", message: "Error receiving the student locations")
+                return
+            }
+            self.locations = locations
+            performUIUpdatesOnMain({ 
+                self.table.reloadData()
+            })
+        }
+    }
+    
     
     //MARK: Table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return locations.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //TODO: ObjectCell
         let cell = tableView.dequeueReusableCellWithIdentifier("ObjectCell")! //as! TableMemesTableViewCell
-        cell.textLabel?.text = objects[indexPath.row]
+        cell.textLabel?.text = locations[indexPath.row].firstName
         return cell
     }
     //MARK: Segues
@@ -42,9 +57,16 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if("toObjectDetail" == segue.identifier){
-
+            
         }
     }
 
-
+    // Mark: General Helpers
+    func showError(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message:
+            message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
+        performUIUpdatesOnMain({self.presentViewController(alertController, animated: true, completion: nil)})
+    }
+    
 }
