@@ -45,8 +45,7 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
         return locations.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //TODO: ObjectCell
-        let cell = tableView.dequeueReusableCellWithIdentifier("ObjectCell")! //as! TableMemesTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cellPlace")! //as! TableMemesTableViewCell
         cell.textLabel?.text = locations[indexPath.row].firstName
         return cell
     }

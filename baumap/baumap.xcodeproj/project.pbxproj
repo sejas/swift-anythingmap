@@ -24,6 +24,7 @@
 		B1D9D5291CAF19E3005573F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1D9D5271CAF19E3005573F5 /* LaunchScreen.storyboard */; };
 		B1DA58D91CD026E900F3FB24 /* StudentLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DA58D81CD026E900F3FB24 /* StudentLocations.swift */; };
 		B1DA58DB1CD026F900F3FB24 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DA58DA1CD026F900F3FB24 /* StudentLocation.swift */; };
+		B1DA58DD1CD2C8D000F3FB24 /* CellPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DA58DC1CD2C8D000F3FB24 /* CellPlace.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		B1D9D52A1CAF19E3005573F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1DA58D81CD026E900F3FB24 /* StudentLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocations.swift; sourceTree = "<group>"; };
 		B1DA58DA1CD026F900F3FB24 /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
+		B1DA58DC1CD2C8D000F3FB24 /* CellPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPlace.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				B124A5B91CBEE223007813A3 /* TableObjectesViewController.swift */,
+				B1DA58DC1CD2C8D000F3FB24 /* CellPlace.swift */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				B124A5D31CC22BE2007813A3 /* NetworkHelper.swift in Sources */,
 				B1DA58DB1CD026F900F3FB24 /* StudentLocation.swift in Sources */,
 				B124A5CF1CC19F51007813A3 /* GCDUtils.swift in Sources */,
+				B1DA58DD1CD2C8D000F3FB24 /* CellPlace.swift in Sources */,
 				B124A5CA1CC144DE007813A3 /* UdacityClient.swift in Sources */,
 				B124A5D11CC228DF007813A3 /* ParseClient.swift in Sources */,
 				B1CD82101CC3F9DC0089DACF /* TextFieldDelegate.swift in Sources */,
