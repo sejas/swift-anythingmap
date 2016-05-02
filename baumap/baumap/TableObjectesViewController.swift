@@ -42,11 +42,12 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
     
     //MARK: Table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("numberOfRowsInSection: \(locations.count)")
         return locations.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cellPlace")! //as! TableMemesTableViewCell
-        cell.textLabel?.text = locations[indexPath.row].firstName
+        let cell = tableView.dequeueReusableCellWithIdentifier("cellPlace")! as! CellPlace
+        cell.lblName.text = "\(locations[indexPath.row].firstName) \(locations[indexPath.row].lastName)"
         return cell
     }
     //MARK: Segues
