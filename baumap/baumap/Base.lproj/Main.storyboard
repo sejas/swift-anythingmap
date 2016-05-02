@@ -120,6 +120,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ged-78-ati" id="2DE-mI-v5X"/>
+                                    <outlet property="delegate" destination="ged-78-ati" id="V0g-MG-g3V"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
