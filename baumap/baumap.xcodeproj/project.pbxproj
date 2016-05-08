@@ -25,6 +25,7 @@
 		B1DA58D91CD026E900F3FB24 /* StudentLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DA58D81CD026E900F3FB24 /* StudentLocations.swift */; };
 		B1DA58DB1CD026F900F3FB24 /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DA58DA1CD026F900F3FB24 /* StudentLocation.swift */; };
 		B1DA58DD1CD2C8D000F3FB24 /* CellPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DA58DC1CD2C8D000F3FB24 /* CellPlace.swift */; };
+		B1EFA9A41CDF9D0800EBB45B /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1EFA9A31CDF9D0800EBB45B /* CustomAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		B1DA58D81CD026E900F3FB24 /* StudentLocations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocations.swift; sourceTree = "<group>"; };
 		B1DA58DA1CD026F900F3FB24 /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		B1DA58DC1CD2C8D000F3FB24 /* CellPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPlace.swift; sourceTree = "<group>"; };
+		B1EFA9A31CDF9D0800EBB45B /* CustomAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			children = (
 				B1CD820D1CC3F59E0089DACF /* CustomButton.swift */,
 				B1CD820F1CC3F9DC0089DACF /* TextFieldDelegate.swift */,
+				B1EFA9A31CDF9D0800EBB45B /* CustomAlert.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				B1CD820B1CC2C24E0089DACF /* ChoosePlaceViewController.swift in Sources */,
 				B124A5C01CC0E57D007813A3 /* MapViewController.swift in Sources */,
 				B1DA58D91CD026E900F3FB24 /* StudentLocations.swift in Sources */,
+				B1EFA9A41CDF9D0800EBB45B /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -34,14 +34,14 @@ class LoginViewController: UIViewController {
         //Clean data
         guard let email = tfEmail.text,
             let password = tfPassword.text else {
-                showError("Error", message: "Please fill your user password")
+                CustomAlert.sharedInstance().showError(self, title: "", message: "Please fill your user password")
                 return
         }
         
         print("loging with user\(email) password:\(password)")
         UdacityClient.sharedInstance().authenticate(email, password: password) { (session, error) in
             guard nil == error else {
-                self.showError("Login Error", message: error!.localizedDescription)
+                CustomAlert.sharedInstance().showError(self, title: "", message: error!.localizedDescription)
                 print("error",error)
                 return
             }
@@ -59,14 +59,6 @@ class LoginViewController: UIViewController {
     }
     @IBAction func actionFacebookLogin(sender: AnyObject) {
         //TODO: Facebook login
-    }
-    
-    // Mark: General Helpers
-    func showError(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message:
-            "\(message)", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
-        performUIUpdatesOnMain({self.presentViewController(alertController, animated: true, completion: nil)})
     }
 
 }

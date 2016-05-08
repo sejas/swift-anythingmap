@@ -106,7 +106,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         StudentLocations.sharedInstance().downloadLocationsWithCompletion { (locations, error) in
             guard nil == error else {
                 print("Error receiving the student locations",error)
-                self.showError("", message: "Error receiving the student locations")
+                CustomAlert.sharedInstance().showError(self, title: "", message: "Error receiving the student locations")
                 return
             }
             self.locations = locations
@@ -118,7 +118,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBAction func actionLogout(sender: AnyObject) {
         UdacityClient.sharedInstance().logout({(result,error) in
             guard nil == error else {
-                self.showError("",message: "Sorry we couldn't make the logout")
+                CustomAlert.sharedInstance().showError(self, title: "", message: "Sorry we couldn't make the logout")
                 return
             }
             performUIUpdatesOnMain({self.dismissViewControllerAnimated(true, completion: nil)})
@@ -135,11 +135,4 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         getParseLocationsAndRefreshMap()
     }
     
-    // Mark: General Helpers
-    func showError(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message:
-            message, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default,handler: nil))
-        performUIUpdatesOnMain({self.presentViewController(alertController, animated: true, completion: nil)})
-    }
 }
