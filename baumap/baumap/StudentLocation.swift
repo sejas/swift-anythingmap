@@ -13,6 +13,8 @@ struct StudentLocation {
     var firstName: String
     var lastName: String
     var mediaURL:  String
+    var updatedAt:  String
+    var createdAt:  String
     
     init(fromDictionary: NSDictionary) {
         // Notice that the float values are being used to create CLLocationDegree values.
@@ -24,5 +26,7 @@ struct StudentLocation {
         firstName = fromDictionary["firstName"] as! String
         lastName = fromDictionary["lastName"] as! String
         mediaURL = fromDictionary["mediaURL"] as! String
+        updatedAt = fromDictionary["updatedAt"] as! String
+        createdAt = fromDictionary["createdAt"] as! String
     }
 }

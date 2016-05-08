@@ -42,7 +42,9 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
                 })
                 return
             }
-            self.locations = locations
+
+            //The table is sorted in order of most recent to oldest update.
+            self.locations = locations.sort { $0.updatedAt > $1.updatedAt }
             performUIUpdatesOnMain({ 
                 self.table.reloadData()
                 self.refreshControl.endRefreshing()
@@ -58,8 +60,9 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellPlace")! as! CellPlace
-        cell.lblName.text = "\(locations[indexPath.row].firstName) \(locations[indexPath.row].lastName)"
-        cell.lblLink.text = "\(locations[indexPath.row].mediaURL)"
+        let location = locations[indexPath.row]
+        cell.lblName.text = "\(location.firstName) \(location.lastName)"
+        cell.lblLink.text = "\(location.mediaURL)"
         return cell
     }
     func refreshTable(sender:AnyObject) {
