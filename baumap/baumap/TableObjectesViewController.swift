@@ -13,10 +13,17 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet weak var table: UITableView!
     
     var locations: [StudentLocation] = []
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getParseLocationsAndRefreshTable()
+
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: Selector("refreshTable:"), forControlEvents: UIControlEvents.ValueChanged)
+        table.addSubview(refreshControl)
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,11 +37,15 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
             guard nil == error else {
                 print("Error receiving the student locations",error)
                 self.showError("", message: "Error receiving the student locations")
+                performUIUpdatesOnMain({ 
+                    self.refreshControl.endRefreshing()
+                })
                 return
             }
             self.locations = locations
             performUIUpdatesOnMain({ 
                 self.table.reloadData()
+                self.refreshControl.endRefreshing()
             })
         }
     }
@@ -50,6 +61,10 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
         cell.lblName.text = "\(locations[indexPath.row].firstName) \(locations[indexPath.row].lastName)"
         return cell
     }
+    func refreshTable(sender:AnyObject) {
+        getParseLocationsAndRefreshTable()
+    }
+    
     //MARK: Segues
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         table.deselectRowAtIndexPath(indexPath, animated: true)
