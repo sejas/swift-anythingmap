@@ -125,6 +125,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="lblLink" destination="1Fv-Sq-vm1" id="Tfa-5S-lvT"/>
                                             <outlet property="lblName" destination="xEY-En-kvp" id="6jZ-8I-KEw"/>
                                         </connections>
                                     </tableViewCell>

@@ -10,4 +10,5 @@ import UIKit
 
 class CellPlace: UITableViewCell {
     @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var lblLink: UILabel!
 }

@@ -59,6 +59,7 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellPlace")! as! CellPlace
         cell.lblName.text = "\(locations[indexPath.row].firstName) \(locations[indexPath.row].lastName)"
+        cell.lblLink.text = "\(locations[indexPath.row].mediaURL)"
         return cell
     }
     func refreshTable(sender:AnyObject) {
