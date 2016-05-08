@@ -105,6 +105,21 @@ class NetworkHelper: NSObject {
         return request
     }
     
+    // Open url in safari
+    func openURLSafari(urlString: String, completionErrorHandler:() -> Void)  {
+        var errorUrl = false
+        if let urlToOpen = NSURL(string: urlString) {
+            if !UIApplication.sharedApplication().openURL(urlToOpen)  {
+                errorUrl = true
+            }
+        }else{
+            errorUrl = true
+        }
+        if errorUrl {
+            completionErrorHandler()
+        }
+    }
+    
     // MARK: Shared Instance
     class func sharedInstance() -> NetworkHelper {
         struct Singleton {

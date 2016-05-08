@@ -84,22 +84,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // to the URL specified in the annotationViews subtitle property.
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            let app = UIApplication.sharedApplication()
             if let toOpen = view.annotation?.subtitle! {
-                app.openURL(NSURL(string: toOpen)!)
+                NetworkHelper.sharedInstance().openURLSafari(toOpen) {
+                    CustomAlert.sharedInstance().showError(self, title: "", message: "Invalid URL")
+                }
             }
         }
-    }
-    //    func mapView(mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-    //
-    //        if control == annotationView.rightCalloutAccessoryView {
-    //            let app = UIApplication.sharedApplication()
-    //            app.openURL(NSURL(string: annotationView.annotation.subtitle))
-    //        }
-    //    }
-    
-    
-    
+    }    
     
     //MARK: Network Request
     func getParseLocationsAndRefreshMap() {

@@ -69,7 +69,9 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
     //MARK: Tap on Row
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         table.deselectRowAtIndexPath(indexPath, animated: true)
-        
+        NetworkHelper.sharedInstance().openURLSafari(locations[indexPath.row].mediaURL) { 
+            CustomAlert.sharedInstance().showError(self, title: "", message: "Invalid URL")
+        }
     }
     
 }
