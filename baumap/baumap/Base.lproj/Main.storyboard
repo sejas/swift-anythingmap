@@ -96,8 +96,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g6o-nU-hj3">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Links on a Map" id="MuB-73-O9Z">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="h9w-gP-6Dc">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PMg-ih-LNn">
+                                                <rect key="frame" x="20" y="7" width="80" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Logout"/>
+                                                <connections>
+                                                    <action selector="actionLogout:" destination="5UI-sW-aA9" eventType="touchUpInside" id="oyy-KM-klV"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem style="plain" id="Jza-24-Ecc">
+                                                <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fWD-af-mFI">
+                                                    <rect key="frame" x="557" y="9" width="23" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="refresh"/>
+                                                    <connections>
+                                                        <action selector="actionUpdate:" destination="5UI-sW-aA9" eventType="touchUpInside" id="ram-7R-ktn"/>
+                                                    </connections>
+                                                </button>
+                                                <color key="tintColor" red="0.89926041670000001" green="0.096509191430000002" blue="0.15344683119999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" id="Kkc-OQ-8m0">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1KJ-bS-Dg1">
+                                                    <rect key="frame" x="509" y="6" width="40" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="pin"/>
+                                                    <connections>
+                                                        <action selector="actionGeoLocate:" destination="5UI-sW-aA9" eventType="touchUpInside" id="wg0-56-GOC"/>
+                                                    </connections>
+                                                </button>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a07-iA-HJ0">
-                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellPlace" rowHeight="64" id="h4G-gN-gQl" customClass="CellPlace" customModule="baumap" customModuleProvider="target">
@@ -138,11 +178,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="g6o-nU-hj3" firstAttribute="top" secondItem="9cC-k5-egX" secondAttribute="topMargin" constant="20" id="12q-2r-sDi"/>
                             <constraint firstItem="a07-iA-HJ0" firstAttribute="top" secondItem="jmZ-tP-Zda" secondAttribute="bottom" id="4Ah-Jr-LfN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="g6o-nU-hj3" secondAttribute="trailing" constant="-20" id="4un-2M-95k"/>
+                            <constraint firstItem="a07-iA-HJ0" firstAttribute="top" secondItem="jmZ-tP-Zda" secondAttribute="bottom" constant="44" id="5Aa-Hz-faN"/>
                             <constraint firstAttribute="trailing" secondItem="a07-iA-HJ0" secondAttribute="trailing" id="9Qc-rt-fMP"/>
+                            <constraint firstItem="g6o-nU-hj3" firstAttribute="leading" secondItem="9cC-k5-egX" secondAttribute="leadingMargin" constant="-20" id="FDh-Tw-UZd"/>
                             <constraint firstItem="3x5-Iq-fOz" firstAttribute="top" secondItem="a07-iA-HJ0" secondAttribute="bottom" id="GBL-tW-ccW"/>
                             <constraint firstItem="a07-iA-HJ0" firstAttribute="leading" secondItem="9cC-k5-egX" secondAttribute="leading" id="vzs-Q3-gAz"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4Ah-Jr-LfN"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="List" image="list" id="JdB-Sk-seb"/>
                     <connections>
@@ -177,7 +226,7 @@
                                     <navigationItem title="Links on a Map" id="UP8-XE-ebm">
                                         <barButtonItem key="leftBarButtonItem" style="plain" id="AIN-Yi-kjI">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4SD-sI-7sz">
-                                                <rect key="frame" x="20" y="7" width="133" height="30"/>
+                                                <rect key="frame" x="20" y="7" width="80" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Logout"/>
                                                 <connections>
@@ -188,9 +237,9 @@
                                         <rightBarButtonItems>
                                             <barButtonItem style="plain" id="vTU-LK-PTw">
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0RB-A4-woa">
-                                                    <rect key="frame" x="494" y="6" width="86" height="32"/>
+                                                    <rect key="frame" x="557" y="9" width="23" height="26"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="list"/>
+                                                    <state key="normal" image="refresh"/>
                                                     <connections>
                                                         <action selector="actionUpdate:" destination="5UI-sW-aA9" eventType="touchUpInside" id="FCO-5D-j33"/>
                                                     </connections>
@@ -198,7 +247,7 @@
                                             </barButtonItem>
                                             <barButtonItem style="plain" id="d5o-VX-7sY">
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FYZ-fb-ljq">
-                                                    <rect key="frame" x="400" y="6" width="86" height="32"/>
+                                                    <rect key="frame" x="509" y="6" width="40" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="pin"/>
                                                     <connections>
@@ -485,6 +534,7 @@
         <image name="list" width="32" height="32"/>
         <image name="map" width="32" height="32"/>
         <image name="pin" width="32" height="32"/>
+        <image name="refresh" width="33" height="38"/>
         <image name="udacity" width="256" height="256"/>
     </resources>
 </document>
