@@ -111,24 +111,23 @@
                                             </button>
                                         </barButtonItem>
                                         <rightBarButtonItems>
-                                            <barButtonItem style="plain" id="Jza-24-Ecc">
-                                                <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fWD-af-mFI">
+                                            <barButtonItem style="plain" id="9zf-Vt-LrP">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HrX-G1-IEz">
                                                     <rect key="frame" x="557" y="9" width="23" height="26"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="refresh"/>
                                                     <connections>
-                                                        <action selector="actionUpdate:" destination="5UI-sW-aA9" eventType="touchUpInside" id="ram-7R-ktn"/>
+                                                        <action selector="actionUpdate:" destination="5UI-sW-aA9" eventType="touchUpInside" id="UYL-Ih-gbt"/>
                                                     </connections>
                                                 </button>
-                                                <color key="tintColor" red="0.89926041670000001" green="0.096509191430000002" blue="0.15344683119999999" alpha="1" colorSpace="calibratedRGB"/>
                                             </barButtonItem>
-                                            <barButtonItem style="plain" id="Kkc-OQ-8m0">
-                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1KJ-bS-Dg1">
+                                            <barButtonItem style="plain" id="0m1-9x-DPR">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fOw-4h-o53">
                                                     <rect key="frame" x="509" y="6" width="40" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="pin"/>
                                                     <connections>
-                                                        <action selector="actionGeoLocate:" destination="5UI-sW-aA9" eventType="touchUpInside" id="wg0-56-GOC"/>
+                                                        <action selector="actionGeoLocate:" destination="5UI-sW-aA9" eventType="touchUpInside" id="zNW-Lj-h1L"/>
                                                     </connections>
                                                 </button>
                                             </barButtonItem>
