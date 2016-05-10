@@ -26,18 +26,23 @@ class ChoosePlaceViewController: UIViewController {
     @IBAction func actionFindOnMap(sender: AnyObject) {
         guard let placeString = tfLocation.text else {
             print("Error, No text in text field Location")
+            CustomAlert.sharedInstance().showError(self, title: "", message: "Error, No text in text field Location")
             return
         }
         //Convert string to coordinates
+        CustomActivityIndicator.sharedInstance().show(self)
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(tfLocation.text!, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+            CustomActivityIndicator.sharedInstance().hide()
             guard nil == error else {
                 print("Address not found geocodeAddressString: ",error)
+                CustomAlert.sharedInstance().showError(self, title: "", message: "Address not found geocodeAddressString: \(error)")
                 return
             }
             guard let placemark = placemarks?.first,
                 let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate else {
                     print("Address not found")
+                    CustomAlert.sharedInstance().showError(self, title: "", message: "Address not found geocodeAddressString: \(error)")
                     return
             }
             //            print("placemarks",placemarks)

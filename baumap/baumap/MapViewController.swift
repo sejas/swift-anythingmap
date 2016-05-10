@@ -94,7 +94,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     //MARK: Network Request
     func getParseLocationsAndRefreshMap() {
+        CustomActivityIndicator.sharedInstance().show(self)
         StudentLocations.sharedInstance().downloadLocationsWithCompletion { (locations, error) in
+            CustomActivityIndicator.sharedInstance().hide()
             guard nil == error else {
                 print("Error receiving the student locations",error)
                 CustomAlert.sharedInstance().showError(self, title: "", message: "Error receiving the student locations")

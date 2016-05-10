@@ -22,7 +22,7 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
 
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(refreshTable), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(actionUpdate), forControlEvents: UIControlEvents.ValueChanged)
         table.addSubview(refreshControl)
     }
     
@@ -65,14 +65,31 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
         cell.lblLink.text = "\(location.mediaURL)"
         return cell
     }
-    func refreshTable(sender:AnyObject) {
+    
+    //MARK: UserInteractions
+    @IBAction func actionLogout(sender: AnyObject) {
+        UdacityClient.sharedInstance().logout({(result,error) in
+            guard nil == error else {
+                CustomAlert.sharedInstance().showError(self, title: "", message: "Sorry we couldn't make the logout")
+                return
+            }
+            performUIUpdatesOnMain({self.dismissViewControllerAnimated(true, completion: nil)})
+            //navigationController?.popToRootViewControllerAnimated(true)
+            print(result)
+            print(error)
+        })
+        
+    }
+    @IBAction func actionGeoLocate(sender: AnyObject) {
+        performSegueWithIdentifier("toChoosePlace", sender: "")
+    }
+    @IBAction func actionUpdate(sender: AnyObject) {
         getParseLocationsAndRefreshTable()
     }
-    
     //MARK: Tap on Row
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         table.deselectRowAtIndexPath(indexPath, animated: true)
-        NetworkHelper.sharedInstance().openURLSafari(locations[indexPath.row].mediaURL) { 
+        NetworkHelper.sharedInstance().openURLSafari(locations[indexPath.row].mediaURL) {
             CustomAlert.sharedInstance().showError(self, title: "", message: "Invalid URL")
         }
     }

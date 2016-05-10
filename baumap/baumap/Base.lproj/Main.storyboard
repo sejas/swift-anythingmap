@@ -117,6 +117,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="refresh"/>
                                                     <connections>
+                                                        <action selector="actionUpdate:" destination="ged-78-ati" eventType="touchUpInside" id="Kcw-GQ-446"/>
                                                         <action selector="actionUpdate:" destination="5UI-sW-aA9" eventType="touchUpInside" id="UYL-Ih-gbt"/>
                                                     </connections>
                                                 </button>
@@ -127,6 +128,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="pin"/>
                                                     <connections>
+                                                        <action selector="actionGeoLocate:" destination="ged-78-ati" eventType="touchUpInside" id="y0Y-X8-PJ9"/>
                                                         <action selector="actionGeoLocate:" destination="5UI-sW-aA9" eventType="touchUpInside" id="zNW-Lj-h1L"/>
                                                     </connections>
                                                 </button>
@@ -195,6 +197,7 @@
                     <tabBarItem key="tabBarItem" title="List" image="list" id="JdB-Sk-seb"/>
                     <connections>
                         <outlet property="table" destination="a07-iA-HJ0" id="y0r-8i-yOG"/>
+                        <segue destination="vHv-hy-ety" kind="presentation" identifier="toChoosePlace" id="Qz7-gv-2Oc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pPX-k7-5qQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -415,7 +418,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fM-KD-aUn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2810" y="59"/>
+            <point key="canvasLocation" x="2876" y="381"/>
         </scene>
         <!--Add Link View Controller-->
         <scene sceneID="WgR-Yf-zN0">
@@ -508,7 +511,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oy1-Hr-4Gy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3639" y="59"/>
+            <point key="canvasLocation" x="3710" y="381"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="MW7-7u-eeA">
@@ -536,4 +539,7 @@
         <image name="refresh" width="33" height="38"/>
         <image name="udacity" width="256" height="256"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Qz7-gv-2Oc"/>
+    </inferredMetricsTieBreakers>
 </document>

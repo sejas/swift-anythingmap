@@ -13,6 +13,7 @@
 		B124A5CF1CC19F51007813A3 /* GCDUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5CE1CC19F51007813A3 /* GCDUtils.swift */; };
 		B124A5D11CC228DF007813A3 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5D01CC228DF007813A3 /* ParseClient.swift */; };
 		B124A5D31CC22BE2007813A3 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B124A5D21CC22BE2007813A3 /* NetworkHelper.swift */; };
+		B154E8EA1CE1BE3200B3EED3 /* CustomActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B154E8E91CE1BE3200B3EED3 /* CustomActivityIndicator.swift */; };
 		B1CD820B1CC2C24E0089DACF /* ChoosePlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CD820A1CC2C24E0089DACF /* ChoosePlaceViewController.swift */; };
 		B1CD820E1CC3F59E0089DACF /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CD820D1CC3F59E0089DACF /* CustomButton.swift */; };
 		B1CD82101CC3F9DC0089DACF /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CD820F1CC3F9DC0089DACF /* TextFieldDelegate.swift */; };
@@ -35,6 +36,7 @@
 		B124A5CE1CC19F51007813A3 /* GCDUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDUtils.swift; sourceTree = "<group>"; };
 		B124A5D01CC228DF007813A3 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
 		B124A5D21CC22BE2007813A3 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		B154E8E91CE1BE3200B3EED3 /* CustomActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomActivityIndicator.swift; sourceTree = "<group>"; };
 		B1CD820A1CC2C24E0089DACF /* ChoosePlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoosePlaceViewController.swift; sourceTree = "<group>"; };
 		B1CD820D1CC3F59E0089DACF /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		B1CD820F1CC3F9DC0089DACF /* TextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				B1CD820D1CC3F59E0089DACF /* CustomButton.swift */,
 				B1CD820F1CC3F9DC0089DACF /* TextFieldDelegate.swift */,
 				B1EFA9A31CDF9D0800EBB45B /* CustomAlert.swift */,
+				B154E8E91CE1BE3200B3EED3 /* CustomActivityIndicator.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				B1CD820B1CC2C24E0089DACF /* ChoosePlaceViewController.swift in Sources */,
 				B124A5C01CC0E57D007813A3 /* MapViewController.swift in Sources */,
 				B1DA58D91CD026E900F3FB24 /* StudentLocations.swift in Sources */,
+				B154E8EA1CE1BE3200B3EED3 /* CustomActivityIndicator.swift in Sources */,
 				B1EFA9A41CDF9D0800EBB45B /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
