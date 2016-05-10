@@ -189,7 +189,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="g6o-nU-hj3" firstAttribute="top" secondItem="9cC-k5-egX" secondAttribute="topMargin" constant="20" id="12q-2r-sDi"/>
                             <constraint firstItem="a07-iA-HJ0" firstAttribute="top" secondItem="jmZ-tP-Zda" secondAttribute="bottom" id="4Ah-Jr-LfN"/>
@@ -274,7 +274,7 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="nPl-9c-xIL" firstAttribute="top" secondItem="8im-4k-6lk" secondAttribute="bottom" id="3Hn-1R-Qnb"/>
                             <constraint firstItem="8im-4k-6lk" firstAttribute="top" secondItem="F2T-08-oLo" secondAttribute="bottom" id="A9d-oo-Ind"/>
