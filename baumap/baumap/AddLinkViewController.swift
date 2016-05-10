@@ -95,6 +95,9 @@ class AddLinkViewController: UIViewController, MKMapViewDelegate {
                 }
                 
                 print("Success location saved into Parse",result)
+                performUIUpdatesOnMain({ 
+                    self.actionClose(false)
+                })
             })
             print("result getPublicDataFromUserID", result)
         }

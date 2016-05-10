@@ -35,14 +35,14 @@ class ChoosePlaceViewController: UIViewController {
         geocoder.geocodeAddressString(tfLocation.text!, completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
             CustomActivityIndicator.sharedInstance().hide()
             guard nil == error else {
-                print("Address not found geocodeAddressString: ",error)
-                CustomAlert.sharedInstance().showError(self, title: "", message: "Address not found geocodeAddressString: \(error)")
+                print("Address not found: ",error)
+                CustomAlert.sharedInstance().showError(self, title: "", message: "Address not found: \(error!.localizedDescription)")
                 return
             }
             guard let placemark = placemarks?.first,
                 let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate else {
                     print("Address not found")
-                    CustomAlert.sharedInstance().showError(self, title: "", message: "Address not found geocodeAddressString: \(error)")
+                    CustomAlert.sharedInstance().showError(self, title: "", message: "Address not found.")
                     return
             }
             //            print("placemarks",placemarks)
