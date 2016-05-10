@@ -42,17 +42,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgd-cK-YZX">
-                                <rect key="frame" x="191" y="392" width="219" height="30"/>
-                                <state key="normal" title="Don't have an account? Sign Up"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieT-WT-bal">
-                                <rect key="frame" x="281" y="340" width="38" height="30"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ees-lQ-orP">
+                                <rect key="frame" x="175" y="434" width="250" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieT-WT-bal">
+                                        <rect key="frame" x="99" y="6" width="52" height="38"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="actionLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9qC-6H-NfO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Lnx-Mf-7wA"/>
+                                    <constraint firstAttribute="width" constant="250" id="TX7-VC-nb0"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgd-cK-YZX">
+                                <rect key="frame" x="191" y="512" width="219" height="30"/>
+                                <state key="normal" title="Don't have an account? Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="actionLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9qC-6H-NfO"/>
+                                    <action selector="actionSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A2P-xU-wf7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -61,13 +77,13 @@
                             <constraint firstItem="Xm7-hs-Gxl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="1jU-IJ-p1L"/>
                             <constraint firstItem="XHG-hl-DBs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2OY-C6-cTi"/>
                             <constraint firstItem="Zgd-cK-YZX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5NB-UL-TLz"/>
+                            <constraint firstItem="Ees-lQ-orP" firstAttribute="top" secondItem="Ym0-cT-5xE" secondAttribute="bottom" constant="33" id="6FR-wL-z90"/>
+                            <constraint firstItem="Zgd-cK-YZX" firstAttribute="top" secondItem="Ees-lQ-orP" secondAttribute="bottom" constant="28" id="8WB-jD-0FK"/>
                             <constraint firstItem="Xm7-hs-Gxl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Ai-pj-bCV"/>
                             <constraint firstItem="Ym0-cT-5xE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FXS-sv-ERQ"/>
                             <constraint firstItem="Ym0-cT-5xE" firstAttribute="top" secondItem="XHG-hl-DBs" secondAttribute="bottom" constant="8" id="Oiw-bl-dkZ"/>
-                            <constraint firstItem="ieT-WT-bal" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="egF-Te-vlu"/>
-                            <constraint firstItem="ieT-WT-bal" firstAttribute="top" secondItem="Ym0-cT-5xE" secondAttribute="bottom" constant="39" id="hfF-fD-lN4"/>
+                            <constraint firstItem="Ees-lQ-orP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hIH-2t-5GO"/>
                             <constraint firstItem="XHG-hl-DBs" firstAttribute="top" secondItem="Xm7-hs-Gxl" secondAttribute="bottom" constant="-3" id="pRL-22-SQF"/>
-                            <constraint firstItem="Zgd-cK-YZX" firstAttribute="top" secondItem="ieT-WT-bal" secondAttribute="bottom" constant="22" id="w8N-JN-KM0"/>
                         </constraints>
                     </view>
                     <connections>

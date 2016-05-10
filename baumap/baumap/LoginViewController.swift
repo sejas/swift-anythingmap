@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
         })
     }
     @IBAction func actionLogin(sender: AnyObject) {
+        CustomActivityIndicator.sharedInstance().show(self)
         //Clean data
         guard let email = tfEmail.text,
             let password = tfPassword.text else {
@@ -40,6 +41,7 @@ class LoginViewController: UIViewController {
         
         print("loging with user\(email) password:\(password)")
         UdacityClient.sharedInstance().authenticate(email, password: password) { (session, error) in
+            CustomActivityIndicator.sharedInstance().hide()
             guard nil == error else {
                 CustomAlert.sharedInstance().showError(self, title: "", message: error!.localizedDescription)
                 print("error",error)
@@ -57,8 +59,8 @@ class LoginViewController: UIViewController {
             })
         }
     }
-    @IBAction func actionFacebookLogin(sender: AnyObject) {
-        //TODO: Facebook login
+    @IBAction func actionSignUp(sender: AnyObject) {
+        NetworkHelper.sharedInstance().openURLSafari("https://www.udacity.com/account/auth#!/signup", completionErrorHandler: {})
     }
 
 }
