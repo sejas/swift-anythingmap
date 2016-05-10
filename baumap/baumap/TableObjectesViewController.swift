@@ -33,7 +33,9 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
     
     //MARK: Network Request
     func getParseLocationsAndRefreshTable() {
+        CustomActivityIndicator.sharedInstance().show(self)
         StudentLocations.sharedInstance().downloadLocationsWithCompletion { (locations, error) in
+            CustomActivityIndicator.sharedInstance().hide()
             guard nil == error else {
                 print("Error receiving the student locations",error)
                 CustomAlert.sharedInstance().showError(self, title: "", message: "Error receiving the student locations")

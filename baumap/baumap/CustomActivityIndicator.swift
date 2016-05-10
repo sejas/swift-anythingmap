@@ -10,22 +10,31 @@ import UIKit
 
 class CustomActivityIndicator: NSObject {
     var activityIndicator = UIActivityIndicatorView()
+    var loadingView: UIView = UIView()
     
     func show (that:UIViewController) {
-        let width = that.view.frame.size.width
-        let height: CGFloat = that.view.frame.size.height
-        let activityIndicatorSize: CGFloat = 40
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.White)
-        activityIndicator.frame = CGRect(x: width / 2 - activityIndicatorSize, y: height / 2 - activityIndicatorSize / 2, width: activityIndicatorSize, height: activityIndicatorSize)
-        activityIndicator.startAnimating()
-        performUIUpdatesOnMain { 
-            that.view.addSubview(self.activityIndicator)
+        
+        loadingView.frame = CGRectMake(0, 0, 80, 80)
+        loadingView.center = that.view.center
+        loadingView.backgroundColor = UIColor(red: 68/255, green: 68/255, blue: 68/255, alpha: 0.7)
+//        loadingView.clipsToBounds = true
+        loadingView.layer.cornerRadius = 10
+        
+        activityIndicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        activityIndicator.center = CGPointMake(loadingView.frame.size.width / 2, loadingView.frame.size.height / 2);
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
+        
+        performUIUpdatesOnMain {
+            self.loadingView.addSubview(self.activityIndicator)
+            that.view.addSubview(self.loadingView)
+            self.activityIndicator.startAnimating()
         }
     }
     
     func hide () {
         performUIUpdatesOnMain {
-            self.activityIndicator.removeFromSuperview()
+            self.loadingView.removeFromSuperview()
         }
     }
     
