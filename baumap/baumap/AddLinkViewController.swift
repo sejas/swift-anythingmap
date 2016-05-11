@@ -74,23 +74,30 @@ class AddLinkViewController: UIViewController, MKMapViewDelegate {
     @IBAction func actionSubmit(sender: AnyObject) {
         guard let mediaURL = tfLink.text else {
             print("Error, No text in text field Location")
+            CustomAlert.sharedInstance().showError(self, title: "", message: "Error, No text in text field Location" )
             return
         }
         //Get user info
+        CustomActivityIndicator.sharedInstance().show(self)
         UdacityClient.sharedInstance().getPublicDataFromUserID() { (result, error) in
+            CustomActivityIndicator.sharedInstance().hide()
             guard error == nil else {
                 print("we couldn't get user info",error)
+                CustomAlert.sharedInstance().showError(self, title: "", message: "Error saving location.")
                 return
             }
             guard let userInfo = result as? NSDictionary else {
                 print("user info is not dictionary",error)
+                CustomAlert.sharedInstance().showError(self, title: "", message: "user info is not dictionary")
                 return
             }
-            
+            CustomActivityIndicator.sharedInstance().show(self)
             //Save location into Parse
             ParseClient.sharedInstance().postStudentLocations(userInfo, placeString: self.placeString, mediaURL: mediaURL, coordinates: self.coordinates, completionHandler: { (result, error) in
+                CustomActivityIndicator.sharedInstance().hide()
                 guard error == nil else {
                     print("Error saving location into Parse",error)
+                    CustomAlert.sharedInstance().showError(self, title: "", message: "Error saving location into Backend")
                     return
                 }
                 

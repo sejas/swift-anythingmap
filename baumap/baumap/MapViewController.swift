@@ -13,8 +13,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var map: MKMapView!
     
-    var locations = [StudentLocation]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +35,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // to create map annotations. This would be more stylish if the dictionaries were being
         // used to create custom structs. Perhaps StudentLocation structs.
         
-        for oneLocation in locations {
+        for oneLocation in StudentLocations.sharedInstance().locations {
             
             // Here we create the annotation and set its coordiate, title, and subtitle properties
             let annotation = MKPointAnnotation()
@@ -102,14 +100,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 CustomAlert.sharedInstance().showError(self, title: "", message: "Error receiving the student locations")
                 return
             }
-            self.locations = locations
+            //locations is saved in shared instance in StudentLocations.sharedInstance().locations
             self.updateLocationsMap()
         }
     }
    
     //MARK: UserInteractions
     @IBAction func actionLogout(sender: AnyObject) {
+        CustomActivityIndicator.sharedInstance().show(self)
         UdacityClient.sharedInstance().logout({(result,error) in
+            CustomActivityIndicator.sharedInstance().hide()
             guard nil == error else {
                 CustomAlert.sharedInstance().showError(self, title: "", message: "Sorry we couldn't make the logout")
                 return

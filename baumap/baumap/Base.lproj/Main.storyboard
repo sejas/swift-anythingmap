@@ -118,7 +118,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Logout"/>
                                                 <connections>
-                                                    <action selector="actionLogout:" destination="5UI-sW-aA9" eventType="touchUpInside" id="oyy-KM-klV"/>
+                                                    <action selector="actionLogout:" destination="ged-78-ati" eventType="touchUpInside" id="G0H-Ml-P1Q"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>

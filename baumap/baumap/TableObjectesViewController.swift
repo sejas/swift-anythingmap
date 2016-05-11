@@ -12,7 +12,6 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var table: UITableView!
     
-    var locations: [StudentLocation] = []
     var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
@@ -45,8 +44,6 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
                 return
             }
 
-            //The table is sorted in order of most recent to oldest update.
-            self.locations = locations.sort { $0.updatedAt > $1.updatedAt }
             performUIUpdatesOnMain({ 
                 self.table.reloadData()
                 self.refreshControl.endRefreshing()
@@ -57,12 +54,12 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
     
     //MARK: Table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("numberOfRowsInSection: \(locations.count)")
-        return locations.count
+        print("numberOfRowsInSection: \(StudentLocations.sharedInstance().locations.count)")
+        return StudentLocations.sharedInstance().locations.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cellPlace")! as! CellPlace
-        let location = locations[indexPath.row]
+        let location = StudentLocations.sharedInstance().locations[indexPath.row]
         cell.lblName.text = "\(location.firstName) \(location.lastName)"
         cell.lblLink.text = "\(location.mediaURL)"
         return cell
@@ -70,7 +67,9 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
     
     //MARK: UserInteractions
     @IBAction func actionLogout(sender: AnyObject) {
+        CustomActivityIndicator.sharedInstance().show(self)
         UdacityClient.sharedInstance().logout({(result,error) in
+            CustomActivityIndicator.sharedInstance().hide()
             guard nil == error else {
                 CustomAlert.sharedInstance().showError(self, title: "", message: "Sorry we couldn't make the logout")
                 return
@@ -91,7 +90,7 @@ class TableObjectesViewController: UIViewController, UITableViewDataSource, UITa
     //MARK: Tap on Row
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         table.deselectRowAtIndexPath(indexPath, animated: true)
-        NetworkHelper.sharedInstance().openURLSafari(locations[indexPath.row].mediaURL) {
+        NetworkHelper.sharedInstance().openURLSafari(StudentLocations.sharedInstance().locations[indexPath.row].mediaURL) {
             CustomAlert.sharedInstance().showError(self, title: "", message: "Invalid URL")
         }
     }

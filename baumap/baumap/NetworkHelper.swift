@@ -12,6 +12,18 @@ class NetworkHelper: NSObject {
     // shared session
     var session = NSURLSession.sharedSession()
     
+    //MARK: Errors struct list
+    struct anErrorStruct {
+        var text: String
+        var code: Int
+    }
+    struct errorsStruct {
+        let unauthorized = anErrorStruct(text: "unauthorized", code: 403)
+        let internalServer = anErrorStruct(text: "internal server", code: 500)
+        let generalError = anErrorStruct(text: "Your request returned a status code other than 2xx!", code: -200)
+    }
+    let errors = errorsStruct()
+    
     // MARK: GET
     func getRequest(urlString: String, headers: [String:String]?, completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         guard let url = NSURL(string: urlString) else {
@@ -45,23 +57,29 @@ class NetworkHelper: NSObject {
     private func requestHelper(request: NSURLRequest, completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         print("NetworkHelper requestHelper request:",request)
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
-            func sendError(error: String) {
-                print(error)
-                let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandler(result: nil, error: NSError(domain: "NetworkHelper", code: 1, userInfo: userInfo))
+            func sendError(anError: anErrorStruct) {
+                print(anError)
+                let userInfo = [NSLocalizedDescriptionKey : anError.text]
+                completionHandler(result: nil, error: NSError(domain: "NetworkHelper", code: anError.code, userInfo: userInfo))
             }
             
             guard (error == nil) else {
-                sendError("There was an error with your request: \(error)")
+                sendError(anErrorStruct(text: "There was an error with your request: \(error)", code: 1))
                 return
             }
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                print("NetworkHelper requestHelper error 2xx:",response)
-                sendError("Your request returned a status code other than 2xx!")
+                let statusCode = (response as? NSHTTPURLResponse)?.statusCode
+                if 403 == statusCode {
+                    sendError(self.errors.unauthorized)
+                }else if 500 == statusCode {
+                    sendError(self.errors.internalServer)
+                }else {
+                    sendError(self.errors.generalError)
+                }
                 return
             }
             guard var data = data else {
-                sendError("No data was returned by the request!")
+                sendError(anErrorStruct(text: "No data was returned by the request!", code: 9))
                 return
             }
             

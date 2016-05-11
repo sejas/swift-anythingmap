@@ -17,6 +17,8 @@ class StudentLocations: NSObject {
         for dictionary in locationsJSON {
             locations.append(StudentLocation(fromDictionary: dictionary))
         }
+        //sort locations in order of most recent to oldest update. Useful to show it in table
+        locations = locations.sort { $0.updatedAt > $1.updatedAt }
         return locations
     }
     

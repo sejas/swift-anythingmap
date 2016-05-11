@@ -37,11 +37,21 @@ class UdacityClient: NSObject {
     func authenticate(email: String, password: String, completionHandler: (result: udacitySession, error: NSError?) -> Void) -> NSURLSessionDataTask {
         let jsonBody = "{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}"
         return NetworkHelper.sharedInstance().postRequest(Constants.URLSession, headers: nil, jsonBody: jsonBody, completionHandlerForPOST: {(result, error) in
-            guard nil == error,
-                let result = result else {
-                    let userInfo = [NSLocalizedDescriptionKey : "Error wrong user password"]
-                    completionHandler(result: self.udacitySessionError, error: NSError(domain: "authenticate", code: 1, userInfo: userInfo))
-                    return
+            func sendError(stringError:String) {
+                let userInfo = [NSLocalizedDescriptionKey : stringError]
+                completionHandler(result: self.udacitySessionError, error: NSError(domain: "authenticate", code: 1, userInfo: userInfo))
+                return
+            }
+            guard nil == error else {
+                if NetworkHelper.sharedInstance().errors.unauthorized.code == error?.code {
+                    return sendError("Please check your user/password")
+                }else {
+                    return sendError("Login error failed")
+                }
+            }
+            guard let result = result else {
+                //Empty response.
+                return sendError("Login error failed")
             }
             self.parseAuthenticationWithCompletionHandler(result as? NSDictionary, completionHandler: completionHandler)
         })
